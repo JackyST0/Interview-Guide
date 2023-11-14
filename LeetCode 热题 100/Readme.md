@@ -396,4 +396,120 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         }
         ```
 
-8. 
+8. 无重复字符的最长子串
+```
+给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
+
+示例 1:
+输入: s = "abcabcbb"
+输出: 3 
+解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+
+示例 2:
+输入: s = "bbbbb"
+输出: 1
+解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+
+示例 3:
+输入: s = "pwwkew"
+输出: 3
+解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+     请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+```
+- 题解
+    - 活动窗口
+        ```
+        class Solution {
+            public int lengthOfLongestSubstring(String s) {
+                // 哈希集合，记录每个字符是否出现过
+                Set<Character> occ = new HashSet<Character>();
+                int n = s.length();
+                // 右指针，初始值为 -1 ，相当于我们在字符串的左边界的左侧，还没有开始移动
+                int rk = -1, ans = 0;
+                for (int i = 0; i < n; ++i) {
+                    if (i != 0) {
+                        // 左指针向右移动一格，移除一个字符
+                        occ.remove(s.charAt(i - 1));
+                    }
+                    while (rk + 1 < n && !occ.contains(s.charAt(rk + 1))) {
+                        // 不断的移动右指针
+                        occ.add(s.charAt(rk + 1));
+                        ++rk;
+                    }
+                    // 第 i 到 rk 个字符是一个极长的无重复字符子串
+                    ans = Math.max(ans, rk -i + 1);
+                }
+                return ans;
+            }
+        }
+        ```
+
+9. 找到字符串中所有字母异位词
+```
+给定两个字符串 s 和 p，找到 s 中所有 p 的 异位词 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。
+
+异位词 指由相同字母重排列形成的字符串（包括相同的字符串）。
+
+示例 1:
+输入: s = "cbaebabacd", p = "abc"
+输出: [0,6]
+解释:
+起始索引等于 0 的子串是 "cba", 它是 "abc" 的异位词。
+起始索引等于 6 的子串是 "bac", 它是 "abc" 的异位词。
+
+ 示例 2:
+输入: s = "abab", p = "ab"
+输出: [0,1,2]
+解释:
+起始索引等于 0 的子串是 "ab", 它是 "ab" 的异位词。
+起始索引等于 1 的子串是 "ba", 它是 "ab" 的异位词。
+起始索引等于 2 的子串是 "ab", 它是 "ab" 的异位词。
+```
+- 题解
+    - 滑动窗口
+        ```
+        class Solution {
+            public List<Integer> findAnagrams(String s, String p) {
+                int sLen = s.length();
+                int pLen = p.length();
+                List<Integer> ans = new ArrayList<>();
+
+                if (sLen < pLen) {
+                    return ans;
+                }
+                // 建立两个数组存放字符串中字母出现的词频，并以此作为标准比较
+                int[] sCount = new int[26];
+                int[] pCount = new int[26];
+
+                // 当滑动窗口的首位在s[0]处时（相当于防止滑动窗口进入数组）
+                for (int i = 0; i < pLen; i++) {
+                    // 记录s中前pLen个字母的词频
+                    ++sCount[s.charAt(i) - 'a'];
+                    // 记录要寻找的字符串中没个字母的词频（只用进行一次来确定）
+                    ++pCount[p.charAt(i) - 'a'];
+                }
+
+                // 判断放置处是否有异位词（在放置时只需判断一次）
+                if (Arrays.equals(sCount, pCount)) {
+                    ans.add(0);
+                }
+
+                // 开始让窗口进行滑动
+                // i是滑动前的首位
+                for (int i = 0; i < sLen - pLen; i++) {
+                    // 将滑动前首位的词频删去
+                    --sCount[s.charAt(i) - 'a'];
+                    // 增加滑动后最后一位的词频（以此达到滑动的效果）
+                    ++sCount[s.charAt(i + pLen) - 'a'];
+
+                    // 判断滑动后处，是否有异位词
+                    if (Arrays.equals(sCount, pCount)) {
+                        ans.add(i + 1);
+                    } 
+                }
+                return ans;
+            }
+        }
+        ```
+
+10. 
