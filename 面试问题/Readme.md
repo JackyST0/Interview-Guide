@@ -61,7 +61,7 @@ Collections.max():采用Collection内含自然比较法求最大值;
 
 6. 为什么重写 equals 时为什么一定要重写 hashCode？
 ```
-因为重写了equals方法能证明两个对象相等，但没有重写hashCode方法意味着用的是object类的方法，就有可能两个都对象的hashCode不相同，就矛盾了，所以重写equals方法就一定要重写hashCode，然后在比较的时候先调用hashCode方法判断hashCode值是否相同，不同就证明两个对象不相等，相等就再调用equals方法进而判断两个对象相不相同。
+因为重写了equals方法能证明两个对象相等，但没有重写hashCode方法意味着用的是object类的方法，就有可能两个对象的hashCode不相同，就矛盾了，所以重写equals方法就一定要重写hashCode，然后在比较的时候先调用hashCode方法判断hashCode值是否相同，不同就证明两个对象不相等，相等就再调用equals方法进而判断两个对象相不相同。
 ```
 
 7. array和arrayList的区别？
