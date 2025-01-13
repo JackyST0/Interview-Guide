@@ -38,6 +38,8 @@
             }
         }
         ```
+        - 时间复杂度：O(N²)  
+        - 空间复杂度：O(1)
     -  哈希表
         ```
         class Solution {
@@ -53,6 +55,8 @@
             }
         }
         ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(N)
 
 2. 字母异位词分组：
 ```
@@ -90,6 +94,8 @@
             }
         }
         ```
+        - 时间复杂度：O(nklogk)  
+        - 空间复杂度：O(nk)
 
 3. 最长连续序列：
 ```
@@ -135,6 +141,9 @@
             }
         }
         ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(n)
+        
 
 4. 移动零：
 ```
@@ -174,6 +183,8 @@
             }
         }
         ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
     - 一次遍历
         ```
         class Solution {
@@ -195,6 +206,8 @@
             }
         }
         ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
 
 5. 盛最多水的容器：
 ```
@@ -236,6 +249,8 @@
             }
         }
         ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(1)
 
 6. 三数之和：
 ```
@@ -315,6 +330,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
             }
         }
         ```
+        - 时间复杂度：O(n²)  
+        - 空间复杂度：O(n)
 
 7. 接雨水
 ```
@@ -362,6 +379,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
             }
         }
         ```
+        - 时间复杂度：O(n²)  
+        - 空间复杂度：O(1)
     - 双指针
         ```
         class Solution {
@@ -395,6 +414,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
             }
         }
         ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
 
 8. 无重复字符的最长子串
 ```
@@ -443,6 +464,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
             }
         }
         ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(1)
 
 9. 找到字符串中所有字母异位词
 ```
@@ -511,6 +534,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
             }
         }
         ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
 
 10. 和为 K 的子数组
 ```
@@ -545,6 +570,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
             }
         }
         ```
+        - 时间复杂度：O(n²)  
+        - 空间复杂度：O(1)
     - 前缀和
         ```
         class Solution {
@@ -570,6 +597,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
             }
         }
         ```
+        - 时间复杂度：O(N²)  
+        - 空间复杂度：O(N)
 
 11. 滑动窗口最大值
 ```
@@ -627,6 +656,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
             }
         }
         ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(k)
 
 12. 最小覆盖子串
 ```
@@ -703,5 +734,144 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
             }
         }
         ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(k)
 
-13. 
+13. 最大子数组和
+```
+给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+
+子数组
+是数组中的一个连续部分。
+
+示例 1：
+输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
+输出：6
+解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
+
+示例 2：
+输入：nums = [1]
+输出：1
+
+示例 3：
+输入：nums = [5,4,-1,7,8]
+输出：23
+```
+- 题解
+    - 动态规划
+        ```
+        class Solution {
+            public int maxSubArray(int[] nums) {
+                int pre = 0, maxAns = nums[0];
+                for (int x : nums) {
+                    pre = Math.max(pre + x, x);
+                    maxAns = Math.max(maxAns, pre);
+                }
+                return maxAns;
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
+
+14. 合并区间
+```
+以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
+
+示例 1：
+输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
+输出：[[1,6],[8,10],[15,18]]
+解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+
+示例 2：
+输入：intervals = [[1,4],[4,5]]
+输出：[[1,5]]
+解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。
+```
+- 题解
+    - 排序
+        ```
+        class Solution {
+            public int[][] merge(int[][] intervals) {
+                if (intervals.length == 0) {
+                    return new int[0][2];
+                }
+                Arrays.sort(intervals, new Comparator<int []>() {
+                    public int compare(int[] interval1, int[] interval2) {
+                        return interval1[0] - interval2[0];
+                    }
+                });
+                List<int []> merged = new ArrayList<int []>();
+                for (int i = 0 ; i < intervals.length ; ++i) {
+                    int L = intervals[i][0], R = intervals[i][1];
+                    if (merged.size() == 0 || merged.get(merged.size() - 1)[1] < L) {
+                        merged.add(new int[]{L, R});
+                    } else {
+                        merged.get(merged.size() - 1)[1] = Math.max(merged.get(merged.size() - 1)[1], R);
+                    }
+                }
+                return merged.toArray(new int[merged.size()][]);
+            }
+        }
+        ```
+        - 时间复杂度：O(nlogn)  
+        - 空间复杂度：O(logn)
+
+15. 轮转数组
+```
+给定一个整数数组 nums，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。
+
+示例 1:
+输入: nums = [1,2,3,4,5,6,7], k = 3
+输出: [5,6,7,1,2,3,4]
+解释:
+向右轮转 1 步: [7,1,2,3,4,5,6]
+向右轮转 2 步: [6,7,1,2,3,4,5]
+向右轮转 3 步: [5,6,7,1,2,3,4]
+
+示例 2:
+输入：nums = [-1,-100,3,99], k = 2
+输出：[3,99,-1,-100]
+解释: 
+向右轮转 1 步: [99,-1,-100,3]
+向右轮转 2 步: [3,99,-1,-100]
+```
+- 题解
+    - 使用额外的数组
+        ```
+        class Solution {
+            public void rotate(int[] nums, int k) {
+                int n = nums.length;
+                int[] newArr = new int[n];
+                for (int i = 0 ; i < n ; ++i) {
+                    newArr[(i + k) % n] = nums[i];
+                }
+                System.arraycopy(newArr, 0, nums, 0, n);
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(n)
+    - 数组翻转
+        ```
+        class Solution {
+            public void rotate(int[] nums, int k) {
+                k %= nums.length;
+                reverse(nums, 0, nums.length - 1);
+                reverse(nums, 0, k - 1);
+                reverse(nums, k, nums.length - 1);
+            }
+
+            public void reverse(int[] nums, int start, int end) {
+                while (start < end) {
+                    int temp = nums[start];
+                    nums[start] = nums[end];
+                    nums[end] = temp;
+                    start += 1;
+                    end -= 1;
+                }
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
