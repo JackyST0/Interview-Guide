@@ -1043,9 +1043,9 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 示例 2：
 输入：matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
 输出：[[0,0,0,0],[0,4,5,0],[0,3,1,0]]
-```       
-![矩阵置零-示例1](https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg)  
-![矩阵置零-示例2](https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg)
+``` 
+![矩阵置零-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6-%E7%A4%BA%E4%BE%8B1.jpg)  
+![矩阵置零-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6-%E7%A4%BA%E4%BE%8B2.jpg)
 - 题解
     - 使用标记数组
         ```
