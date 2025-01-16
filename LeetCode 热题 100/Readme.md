@@ -143,8 +143,7 @@
         ```
         - 时间复杂度：O(n)  
         - 空间复杂度：O(n)
-        
-
+    
 4. 移动零：
 ```
 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
@@ -874,4 +873,248 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         }
         ```
         - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
+
+16. 除自身以外数组的乘积
+```
+给你一个整数数组 nums，返回 数组 answer ，其中 answer[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积 。
+
+题目数据 保证 数组 nums之中任意元素的全部前缀元素和后缀的乘积都在  32 位 整数范围内。
+
+请 不要使用除法，且在 O(n) 时间复杂度内完成此题。
+
+示例 1:
+输入: nums = [1,2,3,4]
+输出: [24,12,8,6]
+
+示例 2:
+输入: nums = [-1,1,0,-3,3]
+输出: [0,0,9,0,0]
+```
+- 题解
+    - 左右乘积列表
+        ```
+        class Solution {
+            public int[] productExceptSelf(int[] nums) {
+                int length = nums.length;
+
+                // L 和 R 分别表示左右两侧的成绩列表
+                int[] L = new int[length];
+                int[] R = new int[length];
+
+                int[] answer = new int[length];
+
+                // L[i] 为索引 i 左侧所有元素的乘积
+                // 对于索引为 '0' 的元素，因为左侧没有元素。所以 L[0] = 1
+                L[0] = 1;
+                for (int i = 1; i < length; i++) {
+                    L[i] = nums[i - 1] * L[i - 1];
+                }
+
+                // R[i] 为索引 i 右侧所有元素的乘积
+                // 对于索引为 'length-1' 的元素，因为右侧没有元素，所以 R[length-1] = 1
+                R[length - 1] = 1;
+                for (int i = length - 2; i >= 0; i--) {
+                    R[i] = nums[i + 1] * R[i + 1];
+                }
+
+                // 对于索引 i，除 nums[i] 之外其余各元素的乘积就是左侧所有元素的乘积乘以右侧所有元素的乘积
+                for (int i = 0; i < length; i++) {
+                    answer[i] = L[i] * R[i];
+                }
+
+                return answer;
+            }
+        }
+        ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(N)
+    - 空间复杂度 O(1) 的方法
+        ```
+        class Solution {
+            public int[] productExceptSelf(int[] nums) {
+                int length = nums.length;
+                int[] answer = new int[length];
+
+                // answer[i] 表示索引 i 左侧所有元素的乘积
+                // 因为索引为'0' 的元素左侧没有元素，所以 answer[0] = 1
+                answer[0] = 1;
+                for (int i = 1; i < length; i++) {
+                    answer[i] = nums[i - 1] * answer[i - 1];
+                }
+
+                // R 为右侧所有元素的乘积
+                // 刚开始右边没有元素，所以 R = 1
+                int R = 1;
+                for (int i = length - 1; i >= 0; i--) {
+                    // 对于索引 i，左边的乘积为 answer[i]，右边的乘积为 R
+                    answer[i] = answer[i] * R;
+                    // R 需要包含右边所有的乘积，所以计算下一个结果时需要将当前值乘到 R 上
+                    R *= nums[i];
+                }
+                return answer;
+            }
+        }
+        ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(1)
+
+17. 缺失的第一个正数
+```
+给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
+
+请你实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案。
+ 
+示例 1：
+输入：nums = [1,2,0]
+输出：3
+解释：范围 [1,2] 中的数字都在数组中。
+
+示例 2：
+输入：nums = [3,4,-1,1]
+输出：2
+解释：1 在数组中，但 2 没有。
+
+示例 3：
+输入：nums = [7,8,9,11,12]
+输出：1
+解释：最小的正数 1 没有出现。
+```
+- 题解
+    - 哈希表
+        ```
+        class Solution {
+            public int firstMissingPositive(int[] nums) {
+                int n = nums.length;
+                for (int i = 0; i < n; ++i) {
+                    if (nums[i] <= 0) {
+                        nums[i] = n + 1;
+                    }
+                }
+                for (int i = 0; i < n; ++i) {
+                    int num = Math.abs(nums[i]);
+                    if (num <= n) {
+                        nums[num - 1] = -Math.abs(nums[num - 1]);
+                    }
+                }
+                for (int i = 0; i < n; ++i) {
+                    if (nums[i] > 0) {
+                        return i + 1;
+                    }
+                }
+                return n + 1;
+            }
+        }
+        ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(1)
+    - 置换
+        ```
+        class Solution {
+            public int firstMissingPositive(int[] nums) {
+                int n = nums.length;
+                for (int i = 0; i < n; ++i) {
+                    while (nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {
+                        int temp = nums[nums[i] - 1];
+                        nums[nums[i] - 1] = nums[i];
+                        nums[i] = temp;
+                    }
+                }
+                for (int i = 0; i < n; ++i) {
+                    if (nums[i] != i + 1) {
+                        return i + 1;
+                    }
+                }
+                return n + 1;
+            }
+        }
+        ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(1)
+
+18. 矩阵置零  
+```
+给定一个 m x n 的矩阵，如果一个元素为 0 ，则将其所在行和列的所有元素都设为 0 。请使用 原地 算法。
+
+示例 1：
+输入：matrix = [[1,1,1],[1,0,1],[1,1,1]]
+输出：[[1,0,1],[0,0,0],[1,0,1]]
+
+示例 2：
+输入：matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+输出：[[0,0,0,0],[0,4,5,0],[0,3,1,0]]
+```       
+![矩阵置零-示例1](https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg)  
+![矩阵置零-示例2](https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg)
+- 题解
+    - 使用标记数组
+        ```
+        class Solution {
+            public void setZeroes(int[][] matrix) {
+                int m = matrix.length, n = matrix[0].length;
+                boolean[] row = new boolean[m];
+                boolean[] col = new boolean[n];
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+                        if (matrix[i][j] == 0) {
+                            row[i] = col[j] = true;
+                        }
+                    }
+                }
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+                        if (row[i] || col[j]) {
+                            matrix[i][j] = 0;
+                        }
+                    }
+                }
+            }
+        }
+        ```
+        - 时间复杂度：O(mn)  
+        - 空间复杂度：O(m+n)
+    - 使用两个标记变量
+        ```
+        class Solution {
+            public void setZeroes(int[][] matrix) {
+                int m = matrix.length, n = matrix[0].length;
+                boolean flagCol0 = false, flagRow0 = false;
+                for (int i = 0; i < m; i++) {
+                    if (matrix[i][0] == 0) {
+                        flagCol0 = true;
+                    }
+                }
+                for (int j = 0; j < n; j++) {
+                    if (matrix[0][j] == 0) {
+                        flagRow0 = true;
+                    }
+                }
+                for (int i = 1; i < m; i++) {
+                    for (int j = 1; j < n; j++) {
+                        if (matrix[i][j] == 0) {
+                            matrix[i][0] = matrix[0][j] = 0;
+                        }
+                    }
+                }
+                for (int i = 1; i < m; i++) {
+                    for (int j = 1; j < n; j++) {
+                        if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+                            matrix[i][j] = 0;
+                        }
+                    }
+                }
+                if (flagCol0) {
+                    for (int i = 0; i < m; i++) {
+                        matrix[i][0] = 0;
+                    }
+                }
+                if (flagRow0) {
+                    for (int j = 0; j < n; j++) {
+                        matrix[0][j] = 0;
+                    }
+                }
+            }
+        }
+        ```
+        - 时间复杂度：O(mn)  
         - 空间复杂度：O(1)
