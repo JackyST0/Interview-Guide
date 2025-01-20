@@ -1118,3 +1118,150 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         ```
         - 时间复杂度：O(mn)  
         - 空间复杂度：O(1)
+    
+19. 螺旋矩阵
+```
+给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
+
+示例 1：
+输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+输出：[1,2,3,6,9,8,7,4,5]
+
+示例 2：
+输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+输出：[1,2,3,4,8,12,11,10,9,5,6,7]
+```
+![螺旋矩阵-示例1]()  
+![螺旋矩阵-示例2]()
+- 题解
+    - 模拟
+        ```
+        class Solution {
+            public List<Integer> spiralOrder(int[][] matrix) {
+                List<Integer> order = new ArrayList<Integer>();
+                if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+                    return order;
+                }
+                int rows = matrix.length, columns = matrix[0].length;
+                boolean[][] visited = new boolean[rows][columns];
+                int total = rows * columns;
+                int row = 0, column = 0;
+                int [][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+                int directionIndex = 0;
+                for (int i = 0; i < total; i++) {
+                    order.add(matrix[row][column]);
+                    visited[row][column] = true;
+                    int nextRow = row + directions[directionIndex][0], nextColumn = column + directions[directionIndex][1];
+                    if (nextRow < 0 || nextRow >= rows || nextColumn < 0 || nextColumn >= columns || visited[nextRow][nextColumn]) {
+                        directionIndex = (directionIndex + 1) % 4;  
+                    }
+                    row += directions[directionIndex][0];
+                    column += directions[directionIndex][1];
+                }
+                return order;
+            }
+        }
+        ```
+        - 时间复杂度：O(mn)  
+        - 空间复杂度：O(mn)
+    - 按层模拟
+        ```
+        class Solution {
+            public List<Integer> spiralOrder(int[][] matrix) {
+                List<Integer> order = new ArrayList<Integer>();
+                if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+                    return order;
+                }
+                int rows = matrix.length, columns = matrix[0].length;
+                int left = 0, right = columns - 1, top = 0, bottom = rows - 1;
+                while (left <= right && top <= bottom) {
+                    for (int column = left; column <= right; column++) {
+                        order.add(matrix[top][column]);
+                    }
+                    for (int row = top + 1; row <= bottom; row++) {
+                        order.add(matrix[row][right]);
+                    }
+                    if (left < right && top < bottom) {
+                        for (int column = right - 1; column > left; column--) {
+                            order.add(matrix[bottom][column]);
+                        }
+                        for (int row = bottom; row > top; row--) {
+                            order.add(matrix[row][left]);
+                        }
+                    }
+                    left++;
+                    right--;
+                    top++;
+                    bottom--;
+                }
+                return order;
+            }
+        }
+        ```
+        - 时间复杂度：O(mn)  
+        - 空间复杂度：O(1)
+    
+20.旋转图像
+```
+给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
+
+你必须在 原地 旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要 使用另一个矩阵来旋转图像。
+
+示例 1：
+输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+输出：[[7,4,1],[8,5,2],[9,6,3]]
+
+示例 2：
+输入：matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+输出：[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+```
+![旋转图像-示例1]()    
+![旋转图像-示例2]()
+- 题解 
+    - 使用辅助数组
+        ```
+        class Solution {
+            public void rotate(int[][] matrix) {
+                int n = matrix.length;
+                int[][] matrix_new = new int[n][n];
+                for (int i = 0; i < n; ++i) {
+                    for (int j = 0; j < n; ++j) {
+                        matrix_new[j][n - i -1] = matrix[i][j];
+                    }
+                }
+                for (int i = 0; i < n; ++i) {
+                    for (int j = 0; j < n; ++j) {
+                        matrix[i][j] = matrix_new[i][j];
+                    }
+                }
+            }
+        }
+        ```
+        - 时间复杂度：O(N²)  
+        - 空间复杂度：O(N²)
+    - 用翻转代替旋转
+        ```
+        class Solution {
+            public void rotate(int[][] matrix) {
+                int n = matrix.length;
+                // 水平翻转
+                for (int i = 0; i < n / 2; ++i) {
+                    for (int j  = 0; j < n; ++j) {
+                        int temp = matrix[i][j];
+                        matrix[i][j] = matrix[n - i - 1][j];
+                        matrix[n - i - 1][j] = temp;
+                    }
+                }
+                // 主对角线翻转
+                for (int i = 0; i < n; ++i) {
+                    for ( int j = 0; j < i; ++j) {
+                        int temp = matrix[i][j];
+                        matrix[i][j] = matrix[j][i];
+                        matrix[j][i] = temp;
+                    }
+                }    
+            }
+        }
+        ```
+        - 时间复杂度：O(N²)  
+        - 空间复杂度：O(1)
