@@ -1131,8 +1131,9 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 输出：[1,2,3,4,8,12,11,10,9,5,6,7]
 ```
-![螺旋矩阵-示例1]()  
-![螺旋矩阵-示例2]()
+![螺旋矩阵-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5-%E7%A4%BA%E4%BE%8B1.jpg)  
+![螺旋矩阵-示例2](
+https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5-%E7%A4%BA%E4%BE%8B2.jpg)
 - 题解
     - 模拟
         ```
@@ -1215,8 +1216,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
 输出：[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
 ```
-![旋转图像-示例1]()    
-![旋转图像-示例2]()
+![旋转图像-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F-%E7%A4%BA%E4%BE%8B1.jpg)    
+![旋转图像-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F-%E7%A4%BA%E4%BE%8B2.jpg)
 - 题解 
     - 使用辅助数组
         ```
