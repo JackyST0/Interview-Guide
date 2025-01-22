@@ -227,6 +227,7 @@
 输入：height = [1,1]
 输出：1
 ```
+![盛最多水的容器-示例1]()
 - 题解
     - 双指针
         ```
@@ -345,6 +346,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：height = [4,2,0,3,2,5]
 输出：9
 ```
+![接雨水-示例1]()
 - 题解
     - 按列求
         ```
@@ -1282,8 +1284,8 @@ https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7
 输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
 输出：false
 ```
-![搜索二维矩阵 II-示例1]()  
-![搜索二维矩阵 II-示例2]() 
+![搜索二维矩阵 II-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5%20II-%E7%A4%BA%E4%BE%8B1.jpg)  
+![搜索二维矩阵 II-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5%20II-%E7%A4%BA%E4%BE%8B2.jpg) 
 - 题解
     - 直接查找
         ```
@@ -1367,9 +1369,10 @@ https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7
 由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。
 这两个链表不相交，因此返回 null 。
 ```
-![相交链表-示例1]()  
-![相交链表-示例2]() 
-![相交链表-示例3]() 
+![相交链表-示例1](
+https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.png)  
+![相交链表-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B2.png) 
+![相交链表-示例3](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B3.png) 
 - 题解
     - 哈希集合
         ```
