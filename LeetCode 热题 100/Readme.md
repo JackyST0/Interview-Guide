@@ -227,7 +227,7 @@
 输入：height = [1,1]
 输出：1
 ```
-![盛最多水的容器-示例1]()
+![盛最多水的容器-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8-%E7%A4%BA%E4%BE%8B1.jpg)
 - 题解
     - 双指针
         ```
@@ -346,7 +346,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：height = [4,2,0,3,2,5]
 输出：9
 ```
-![接雨水-示例1]()
+![接雨水-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%8E%A5%E9%9B%A8%E6%B0%B4-%E7%A4%BA%E4%BE%8B1.png)
 - 题解
     - 按列求
         ```
