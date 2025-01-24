@@ -1453,8 +1453,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：head = []
 输出：[]
 ```
-![反转链表-示例1]()  
-![反转链表-示例2]()
+![反转链表-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.jpg)  
+![反转链表-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B2.jpg)
 - 题解
     - 迭代
         ```
@@ -1525,8 +1525,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：head = [1,2]
 输出：false
 ```
-![回文链表-示例1]()  
-![回文链表-示例2]()
+![回文链表-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.jpg)  
+![回文链表-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B2.jpg)
 - 题解
     - 将值复制到数组中后用双指针法
         ```
