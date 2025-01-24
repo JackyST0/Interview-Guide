@@ -1,6 +1,6 @@
 # LeetCode 热题 100
 
-1. 两数之和：
+## 1. 两数之和：
 ```
 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target  的那两个整数，并返回它们的数组下标。
 
@@ -58,7 +58,7 @@
         - 时间复杂度：O(N)  
         - 空间复杂度：O(N)
 
-2. 字母异位词分组：
+## 2. 字母异位词分组：
 ```
 给你一个字符串数组，请你将字母异位词组合在一起。可以按任意顺序返回结果列表。
 
@@ -97,7 +97,7 @@
         - 时间复杂度：O(nklogk)  
         - 空间复杂度：O(nk)
 
-3. 最长连续序列：
+## 3. 最长连续序列：
 ```
 给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
 
@@ -144,7 +144,7 @@
         - 时间复杂度：O(n)  
         - 空间复杂度：O(n)
     
-4. 移动零：
+## 4. 移动零：
 ```
 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
 
@@ -208,7 +208,7 @@
         - 时间复杂度：O(n)  
         - 空间复杂度：O(1)
 
-5. 盛最多水的容器：
+## 5. 盛最多水的容器：
 ```
 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
 
@@ -252,7 +252,7 @@
         - 时间复杂度：O(N)  
         - 空间复杂度：O(1)
 
-6. 三数之和：
+## 6. 三数之和：
 ```
 给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请
 
@@ -333,7 +333,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(n²)  
         - 空间复杂度：O(n)
 
-7. 接雨水
+## 7. 接雨水
 ```
 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 
@@ -418,7 +418,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(n)  
         - 空间复杂度：O(1)
 
-8. 无重复字符的最长子串
+## 8. 无重复字符的最长子串
 ```
 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
 
@@ -468,7 +468,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(N)  
         - 空间复杂度：O(1)
 
-9. 找到字符串中所有字母异位词
+## 9. 找到字符串中所有字母异位词
 ```
 给定两个字符串 s 和 p，找到 s 中所有 p 的 异位词 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。
 
@@ -538,7 +538,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(n)  
         - 空间复杂度：O(1)
 
-10. 和为 K 的子数组
+## 10. 和为 K 的子数组
 ```
 给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。
 
@@ -601,7 +601,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(N²)  
         - 空间复杂度：O(N)
 
-11. 滑动窗口最大值
+## 11. 滑动窗口最大值
 ```
 给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
 
@@ -660,7 +660,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(n)  
         - 空间复杂度：O(k)
 
-12. 最小覆盖子串
+## 12. 最小覆盖子串
 ```
 给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 "" 。
 
@@ -738,7 +738,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(n)  
         - 空间复杂度：O(k)
 
-13. 最大子数组和
+## 13. 最大子数组和
 ```
 给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 
@@ -775,7 +775,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(n)  
         - 空间复杂度：O(1)
 
-14. 合并区间
+## 14. 合并区间
 ```
 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
 
@@ -818,7 +818,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(nlogn)  
         - 空间复杂度：O(logn)
 
-15. 轮转数组
+## 15. 轮转数组
 ```
 给定一个整数数组 nums，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。
 
@@ -877,7 +877,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(n)  
         - 空间复杂度：O(1)
 
-16. 除自身以外数组的乘积
+## 16. 除自身以外数组的乘积
 ```
 给你一个整数数组 nums，返回 数组 answer ，其中 answer[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积 。
 
@@ -961,7 +961,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(N)  
         - 空间复杂度：O(1)
 
-17. 缺失的第一个正数
+## 17. 缺失的第一个正数
 ```
 给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
 
@@ -1034,7 +1034,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(N)  
         - 空间复杂度：O(1)
 
-18. 矩阵置零  
+## 18. 矩阵置零  
 ```
 给定一个 m x n 的矩阵，如果一个元素为 0 ，则将其所在行和列的所有元素都设为 0 。请使用 原地 算法。
 
@@ -1121,7 +1121,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         - 时间复杂度：O(mn)  
         - 空间复杂度：O(1)
     
-19. 螺旋矩阵
+## 19. 螺旋矩阵
 ```
 给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
 
@@ -1134,8 +1134,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输出：[1,2,3,4,8,12,11,10,9,5,6,7]
 ```
 ![螺旋矩阵-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5-%E7%A4%BA%E4%BE%8B1.jpg)  
-![螺旋矩阵-示例2](
-https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5-%E7%A4%BA%E4%BE%8B2.jpg)
+![螺旋矩阵-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5-%E7%A4%BA%E4%BE%8B2.jpg)
 - 题解
     - 模拟
         ```
@@ -1204,7 +1203,7 @@ https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7
         - 时间复杂度：O(mn)  
         - 空间复杂度：O(1)
     
-20.旋转图像
+## 20.旋转图像
 ```
 给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
 
@@ -1269,7 +1268,7 @@ https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7
         - 时间复杂度：O(N²)  
         - 空间复杂度：O(1)
 
-21. 搜索二维矩阵 II
+## 21. 搜索二维矩阵 II
 ```
 编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target 。该矩阵具有以下特性：
 
@@ -1337,7 +1336,7 @@ https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7
         - 时间复杂度：O(mlogn)  
         - 空间复杂度：O(1)
 
-22. 相交链表
+## 22. 相交链表
 ```
 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。
 
@@ -1369,9 +1368,8 @@ https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7
 由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。
 这两个链表不相交，因此返回 null 。
 ```
-![相交链表-示例1](
-https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.png)  
-![相交链表-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B2.png) 
+![相交链表-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.png)  
+![相交链表-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B2.png)   
 ![相交链表-示例3](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B3.png) 
 - 题解
     - 哈希集合
@@ -1436,4 +1434,200 @@ https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7
         }
         ```
         - 时间复杂度：O(m+n)  
+        - 空间复杂度：O(1)
+
+## 23. 反转链表
+```
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+ 
+
+示例 1：
+输入：head = [1,2,3,4,5]
+输出：[5,4,3,2,1]
+
+示例 2：
+输入：head = [1,2]
+输出：[2,1]
+
+示例 3：
+输入：head = []
+输出：[]
+```
+![反转链表-示例1]()  
+![反转链表-示例2]()
+- 题解
+    - 迭代
+        ```
+        /**
+        * Definition for singly-linked list.
+        * public class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode() {}
+        *     ListNode(int val) { this.val = val; }
+        *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        * }
+        */
+        class Solution {
+            public ListNode reverseList(ListNode head) {
+                ListNode prev = null;
+                ListNode curr = head;
+                while (curr != null) {
+                    ListNode next = curr.next;
+                    curr.next = prev;
+                    prev = curr;
+                    curr = next;
+                }
+                return prev;
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
+    - 递归
+        ```
+        /**
+        * Definition for singly-linked list.
+        * public class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode() {}
+        *     ListNode(int val) { this.val = val; }
+        *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        * }
+        */
+        class Solution {
+            public ListNode reverseList(ListNode head) {
+                if (head == null || head.next == null) {
+                    return head;
+                }
+                ListNode newHead = reverseList(head.next);
+                head.next.next = head;
+                head.next = null;
+                return newHead;
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(n)
+
+## 24. 回文链表
+```
+给你一个单链表的头节点 head ，请你判断该链表是否为
+回文链表
+。如果是，返回 true ；否则，返回 false 。
+
+示例 1：
+输入：head = [1,2,2,1]
+输出：true
+
+示例 2：
+输入：head = [1,2]
+输出：false
+```
+![回文链表-示例1]()  
+![回文链表-示例2]()
+- 题解
+    - 将值复制到数组中后用双指针法
+        ```
+        /**
+        * Definition for singly-linked list.
+        * public class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode() {}
+        *     ListNode(int val) { this.val = val; }
+        *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        * }
+        */
+        class Solution {
+            public boolean isPalindrome(ListNode head) {
+                List<Integer> vals = new ArrayList<Integer>();
+
+                // 将链表的值复制到数组中
+                ListNode currentNode = head;
+                while (currentNode != null) {
+                    vals.add(currentNode.val);
+                    currentNode = currentNode.next;
+                }
+
+                // 使用双指针判断是否回文
+                int front = 0;
+                int back = vals.size() - 1;
+                while (front < back) {
+                    if (!vals.get(front).equals(vals.get(back))) {
+                        return false;
+                    }
+                    front++;
+                    back--;
+                }
+                return true;
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(n)
+    - 快慢指针
+        ```
+        /**
+        * Definition for singly-linked list.
+        * public class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode() {}
+        *     ListNode(int val) { this.val = val; }
+        *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        * }
+        */
+        class Solution {
+            public boolean isPalindrome(ListNode head) {
+                if (head == null) {
+                    return true;
+                }
+
+                // 找到前半部分链表的为节点并反转后半部分链表
+                ListNode firstHalfEnd = endOfFirstHalf(head);
+                ListNode secondHalfStart = reverseList(firstHalfEnd.next);
+
+                // 判断是否回文
+                ListNode p1 = head;
+                ListNode p2 = secondHalfStart;
+                boolean result = true;
+                while (result && p2 != null) {
+                    if (p1.val != p2.val) {
+                        result = false;
+                    }
+                    p1 = p1.next;
+                    p2 = p2.next;
+                }
+
+                // 还原链表并返回结果
+                firstHalfEnd.next = reverseList(secondHalfStart);
+                return result;
+            }
+
+            private ListNode reverseList(ListNode head) {
+                ListNode prev = null;
+                ListNode curr = head;
+                while (curr != null) {
+                    ListNode nextTemp = curr.next;
+                    curr.next = prev;
+                    prev = curr;
+                    curr = nextTemp;
+                }
+                return prev;
+            }
+
+            private ListNode endOfFirstHalf(ListNode head) {
+                ListNode fast = head;
+                ListNode slow = head;
+                while (fast.next != null && fast.next.next != null) {
+                    fast = fast.next.next;
+                    slow = slow.next;
+                }
+                return slow;
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
         - 空间复杂度：O(1)
