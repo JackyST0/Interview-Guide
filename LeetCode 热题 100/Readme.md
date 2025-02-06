@@ -1744,9 +1744,9 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输出：返回 null
 解释：链表中没有环。
 ```
-![环形链表 II-示例1]()  
-![环形链表 II-示例2]()  
-![环形链表 II-示例3]()
+![环形链表 II-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II-%E7%A4%BA%E4%BE%8B1.png)  
+![环形链表 II-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II-%E7%A4%BA%E4%BE%8B2.png)  
+![环形链表 II-示例3](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II-%E7%A4%BA%E4%BE%8B3.png)
 - 题解
     - 哈希表
         ```
@@ -1837,7 +1837,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：l1 = [], l2 = [0]
 输出：[0]
 ```
-![合并两个有序链表-示例1]()  
+![合并两个有序链表-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.jpg)  
 - 题解
     - 递归
         ```
