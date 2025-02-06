@@ -1720,3 +1720,190 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         ```
         - 时间复杂度：O(N)  
         - 空间复杂度：O(1)
+
+## 26. 环形链表 II
+```
+给定一个链表的头节点  head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+
+如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。
+
+不允许修改 链表。
+
+示例 1：
+输入：head = [3,2,0,-4], pos = 1
+输出：返回索引为 1 的链表节点
+解释：链表中有一个环，其尾部连接到第二个节点。
+
+示例 2：
+输入：head = [1,2], pos = 0
+输出：返回索引为 0 的链表节点
+解释：链表中有一个环，其尾部连接到第一个节点。
+
+示例 3：
+输入：head = [1], pos = -1
+输出：返回 null
+解释：链表中没有环。
+```
+![环形链表 II-示例1]()  
+![环形链表 II-示例2]()  
+![环形链表 II-示例3]()
+- 题解
+    - 哈希表
+        ```
+        /**
+        * Definition for singly-linked list.
+        * class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode(int x) {
+        *         val = x;
+        *         next = null;
+        *     }
+        * }
+        */
+        public class Solution {
+            public ListNode detectCycle(ListNode head) {
+            ListNode pos = head;
+            Set<ListNode> visited = new HashSet<ListNode>();
+            while (pos != null) {
+                if (visited.contains(pos)) {
+                    return pos;
+                } else {
+                    visited.add(pos);
+                }
+                pos = pos.next;
+            }  
+            return null;
+            }
+        }
+        ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(N)
+    - 快慢指针
+        ```
+        /**
+        * Definition for singly-linked list.
+        * class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode(int x) {
+        *         val = x;
+        *         next = null;
+        *     }
+        * }
+        */
+        public class Solution {
+            public ListNode detectCycle(ListNode head) {
+            if (head == null) {
+                return null;
+            }
+            ListNode slow = head, fast = head;
+            while (fast != null) {
+                slow = slow.next;
+                if (fast.next != null) {
+                    fast = fast.next.next;
+                } else {
+                    return null;
+                } 
+                if (fast == slow) {
+                    ListNode ptr = head;
+                    while (ptr != slow) {
+                        ptr = ptr.next;
+                        slow = slow.next;
+                    }
+                    return ptr;
+                }
+            }
+            return null;
+            }
+        }
+        ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(1)
+
+## 27. 合并两个有序链表
+```
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+
+示例 1：
+输入：l1 = [1,2,4], l2 = [1,3,4]
+输出：[1,1,2,3,4,4]
+
+示例 2：
+输入：l1 = [], l2 = []
+输出：[]
+
+示例 3：
+输入：l1 = [], l2 = [0]
+输出：[0]
+```
+![合并两个有序链表-示例1]()  
+- 题解
+    - 递归
+        ```
+        /**
+        * Definition for singly-linked list.
+        * public class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode() {}
+        *     ListNode(int val) { this.val = val; }
+        *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        * }
+        */
+        class Solution {
+            public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+                if (l1 == null) {
+                    return l2;
+                } else if (l2 == null) {
+                    return l1;
+                } else if (l1.val < l2.val) {
+                    l1.next = mergeTwoLists(l1.next, l2);
+                    return l1;
+                } else {
+                    l2.next = mergeTwoLists(l1, l2.next);
+                    return l2;
+                }
+            }
+        }
+        ```
+        - 时间复杂度：O(n+m)  
+        - 空间复杂度：O(n+m)
+
+    - 迭代
+        ```
+        /**
+        * Definition for singly-linked list.
+        * public class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode() {}
+        *     ListNode(int val) { this.val = val; }
+        *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        * }
+        */
+        class Solution {
+            public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+                ListNode prehead = new ListNode(-1);
+
+                ListNode prev = prehead;
+                while (l1 != null && l2 != null) {
+                    if (l1.val <= l2.val) {
+                        prev.next = l1;
+                        l1 = l1.next;
+                    } else {
+                        prev.next = l2;
+                        l2 = l2.next;
+                    }
+                    prev = prev.next;
+                }
+
+                // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
+                prev.next = l1 == null ? l2 : l1;
+
+                return prehead.next;
+            }
+        }
+        ```
+        - 时间复杂度：O(n+m)  
+        - 空间复杂度：O(1)
