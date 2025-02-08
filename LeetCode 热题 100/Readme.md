@@ -1,6 +1,6 @@
 # LeetCode 热题 100
 
-## 1. 两数之和：
+## 1. 两数之和
 ```
 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target  的那两个整数，并返回它们的数组下标。
 
@@ -58,7 +58,7 @@
         - 时间复杂度：O(N)  
         - 空间复杂度：O(N)
 
-## 2. 字母异位词分组：
+## 2. 字母异位词分组
 ```
 给你一个字符串数组，请你将字母异位词组合在一起。可以按任意顺序返回结果列表。
 
@@ -97,7 +97,7 @@
         - 时间复杂度：O(nklogk)  
         - 空间复杂度：O(nk)
 
-## 3. 最长连续序列：
+## 3. 最长连续序列
 ```
 给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
 
@@ -144,7 +144,7 @@
         - 时间复杂度：O(n)  
         - 空间复杂度：O(n)
     
-## 4. 移动零：
+## 4. 移动零
 ```
 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
 
@@ -208,7 +208,7 @@
         - 时间复杂度：O(n)  
         - 空间复杂度：O(1)
 
-## 5. 盛最多水的容器：
+## 5. 盛最多水的容器
 ```
 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
 
@@ -227,7 +227,7 @@
 输入：height = [1,1]
 输出：1
 ```
-![盛最多水的容器-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8-%E7%A4%BA%E4%BE%8B1.jpg)
+![盛最多水的容器-示例1](/相关图册/盛最多水的容器-示例1.jpg)
 - 题解
     - 双指针
         ```
@@ -252,7 +252,7 @@
         - 时间复杂度：O(N)  
         - 空间复杂度：O(1)
 
-## 6. 三数之和：
+## 6. 三数之和
 ```
 给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请
 
@@ -346,7 +346,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：height = [4,2,0,3,2,5]
 输出：9
 ```
-![接雨水-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%8E%A5%E9%9B%A8%E6%B0%B4-%E7%A4%BA%E4%BE%8B1.png)
+![接雨水-示例1](/相关图册/接雨水-示例1.png)
 - 题解
     - 按列求
         ```
@@ -1046,8 +1046,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
 输出：[[0,0,0,0],[0,4,5,0],[0,3,1,0]]
 ``` 
-![矩阵置零-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6-%E7%A4%BA%E4%BE%8B1.jpg)  
-![矩阵置零-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6-%E7%A4%BA%E4%BE%8B2.jpg)
+![矩阵置零-示例1](/相关图册/矩阵置零-示例1.jpg)  
+![矩阵置零-示例2](/相关图册/矩阵置零-示例2.jpg)
 - 题解
     - 使用标记数组
         ```
@@ -1133,8 +1133,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 输出：[1,2,3,4,8,12,11,10,9,5,6,7]
 ```
-![螺旋矩阵-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5-%E7%A4%BA%E4%BE%8B1.jpg)  
-![螺旋矩阵-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5-%E7%A4%BA%E4%BE%8B2.jpg)
+![螺旋矩阵-示例1](/相关图册/螺旋矩阵-示例1.jpg)  
+![螺旋矩阵-示例2](/相关图册/螺旋矩阵-示例2.jpg)
 - 题解
     - 模拟
         ```
@@ -1217,8 +1217,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
 输出：[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
 ```
-![旋转图像-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F-%E7%A4%BA%E4%BE%8B1.jpg)    
-![旋转图像-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F-%E7%A4%BA%E4%BE%8B2.jpg)
+![旋转图像-示例1](/相关图册/旋转图像-示例1.jpg)    
+![旋转图像-示例2](/相关图册/旋转图像-示例2.jpg)
 - 题解 
     - 使用辅助数组
         ```
@@ -1283,8 +1283,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
 输出：false
 ```
-![搜索二维矩阵 II-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5%20II-%E7%A4%BA%E4%BE%8B1.jpg)  
-![搜索二维矩阵 II-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5%20II-%E7%A4%BA%E4%BE%8B2.jpg) 
+![搜索二维矩阵 II-示例1](/相关图册/搜索二维矩阵%20II-示例1.jpg)  
+![搜索二维矩阵 II-示例2](/相关图册/搜索二维矩阵%20II-示例2.jpg) 
 - 题解
     - 直接查找
         ```
@@ -1368,9 +1368,9 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。
 这两个链表不相交，因此返回 null 。
 ```
-![相交链表-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.png)  
-![相交链表-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B2.png)   
-![相交链表-示例3](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B3.png) 
+![相交链表-示例1](/相关图册/相交链表-示例1.png)  
+![相交链表-示例2](/相关图册/相交链表-示例2.png)   
+![相交链表-示例3](/相关图册/相交链表-示例3.png) 
 - 题解
     - 哈希集合
         ```
@@ -1453,8 +1453,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：head = []
 输出：[]
 ```
-![反转链表-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.jpg)  
-![反转链表-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B2.jpg)
+![反转链表-示例1](/相关图册/反转链表-示例1.jpg)  
+![反转链表-示例2](/相关图册/反转链表-示例2.jpg)
 - 题解
     - 迭代
         ```
@@ -1525,8 +1525,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：head = [1,2]
 输出：false
 ```
-![回文链表-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.jpg)  
-![回文链表-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B2.jpg)
+![回文链表-示例1](/相关图册/回文链表-示例1.jpg)  
+![回文链表-示例2](/相关图册/回文链表-示例2.jpg)
 - 题解
     - 将值复制到数组中后用双指针法
         ```
@@ -1655,9 +1655,9 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输出：false
 解释：链表中没有环。
 ```
-![环形链表-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.png)  
-![环形链表-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B2.png)  
-![环形链表-示例3](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B3.png)
+![环形链表-示例1](/相关图册/环形链表-示例1.png)  
+![环形链表-示例2](/相关图册/环形链表-示例2.png)  
+![环形链表-示例3](/相关图册/环形链表-示例3.png)
 - 题解
     - 哈希表
         ```
@@ -1744,9 +1744,9 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输出：返回 null
 解释：链表中没有环。
 ```
-![环形链表 II-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II-%E7%A4%BA%E4%BE%8B1.png)  
-![环形链表 II-示例2](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II-%E7%A4%BA%E4%BE%8B2.png)  
-![环形链表 II-示例3](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II-%E7%A4%BA%E4%BE%8B3.png)
+![环形链表 II-示例1](/相关图册/环形链表%20II-示例1.png)  
+![环形链表 II-示例2](/相关图册/环形链表%20II-示例2.png)  
+![环形链表 II-示例3](/相关图册/环形链表%20II-示例3.png)
 - 题解
     - 哈希表
         ```
@@ -1837,7 +1837,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 输入：l1 = [], l2 = [0]
 输出：[0]
 ```
-![合并两个有序链表-示例1](https://raw.githubusercontent.com/JackyST0/Interview-Guide/refs/heads/master/%E7%9B%B8%E5%85%B3%E5%9B%BE%E5%86%8C/%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8-%E7%A4%BA%E4%BE%8B1.jpg)  
+![合并两个有序链表-示例1](/相关图册/合并两个有序链表-示例1.jpg)  
 - 题解
     - 递归
         ```
@@ -1906,4 +1906,159 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         }
         ```
         - 时间复杂度：O(n+m)  
+        - 空间复杂度：O(1)
+
+## 28. 两数相加
+```
+给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
+
+请你将两个数相加，并以相同形式返回一个表示和的链表。
+
+你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+
+示例 1：
+输入：l1 = [2,4,3], l2 = [5,6,4]
+输出：[7,0,8]
+解释：342 + 465 = 807.
+
+示例 2：
+输入：l1 = [0], l2 = [0]
+输出：[0]
+
+示例 3：
+输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+输出：[8,9,9,9,0,0,0,1]
+```
+![两数相加-示例1](/相关图册/两数相加-示例1.jpg)
+- 题解
+    - 模拟
+        ```
+        /**
+        * Definition for singly-linked list.
+        * public class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode() {}
+        *     ListNode(int val) { this.val = val; }
+        *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        * }
+        */
+        class Solution {
+            public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+                ListNode head = null, tail = null;
+                int carry = 0;
+                while (l1 != null || l2 != null) {
+                    int n1 = l1 != null ? l1.val : 0;
+                    int n2 = l2 != null ? l2.val : 0;
+                    int sum = n1 + n2 + carry;
+                    if  (head == null) {
+                        head = tail = new ListNode(sum % 10);
+                    } else {
+                        tail.next = new ListNode(sum % 10);
+                        tail = tail.next;
+                    }
+                    carry = sum / 10;
+                    if (l1 != null) {
+                        l1 = l1.next;
+                    }
+                    if (l2 !=null) {
+                        l2 = l2.next;
+                    }
+                }
+                if (carry > 0) {
+                    tail.next = new ListNode(carry);
+                }
+                return head;
+            }
+        }
+        ```
+        - 时间复杂度：O(max(m,n))  
+        - 空间复杂度：O(1)
+
+## 29. 删除链表的倒数第 N 个结点
+```
+给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
+
+示例 1：
+输入：head = [1,2,3,4,5], n = 2
+输出：[1,2,3,5]
+
+示例 2：
+输入：head = [1], n = 1
+输出：[]
+
+示例 3：
+输入：head = [1,2], n = 1
+输出：[1]
+```
+![删除链表的倒数第 N 个结点-示例1](/相关图册/删除链表的倒数第%20N%20个结点-示例1.jpg)
+- 题解
+    - 哑巴节点
+        ```
+        /**
+        * Definition for singly-linked list.
+        * public class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode() {}
+        *     ListNode(int val) { this.val = val; }
+        *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        * }
+        */
+        class Solution {
+            public ListNode removeNthFromEnd(ListNode head, int n) {
+                ListNode dummy = new ListNode(0, head);
+                int length = getLength(head);
+                ListNode cur = dummy;
+                for (int i = 1; i < length - n + 1; ++i) {
+                    cur = cur.next;
+                }
+                cur.next = cur.next.next;
+                ListNode ans = dummy.next;
+                return ans;
+            }
+
+            public int getLength(ListNode head) {
+                int length = 0;
+                while (head != null) {
+                    ++length;
+                    head = head.next;
+                }
+                return length;
+            }
+        }
+        ```
+        - 时间复杂度：O(L)  
+        - 空间复杂度：O(1)
+    - 快慢指针
+        ```
+        /**
+        * Definition for singly-linked list.
+        * public class ListNode {
+        *     int val;
+        *     ListNode next;
+        *     ListNode() {}
+        *     ListNode(int val) { this.val = val; }
+        *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        * }
+        */
+        class Solution {
+            public ListNode removeNthFromEnd(ListNode head, int n) {
+                ListNode dummy = new ListNode(0, head);
+                ListNode first = head;
+                ListNode second = dummy;
+                for (int i = 0; i < n; ++i) {
+                    first = first.next;
+                }
+                while (first != null) {
+                    first = first.next;
+                    second = second.next;
+                }
+                second.next = second.next.next;
+                ListNode ans = dummy.next;
+                return ans;
+            }
+        }
+        ```
+        - 时间复杂度：O(L)  
         - 空间复杂度：O(1)
