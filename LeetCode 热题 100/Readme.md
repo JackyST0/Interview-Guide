@@ -3025,3 +3025,102 @@ lRUCache.get(4);    // 返回 4
         - 时间复杂度：O(N)  
         - 空间复杂度：O(N)
 
+## 39. 对称二叉树
+```
+给你一个二叉树的根节点 root ， 检查它是否轴对称。
+
+示例 1：
+输入：root = [1,2,2,3,4,4,3]
+输出：true
+
+示例 2：
+输入：root = [1,2,2,null,3,null,3]
+输出：false
+```
+![对称二叉树-示例1](/相关图册/对称二叉树-示例1.webp)  
+![对称二叉树-示例2](/相关图册/对称二叉树-示例2.webp)
+- 题解
+    - 递归
+        ```
+        /**
+        * Definition for a binary tree node.
+        * public class TreeNode {
+        *     int val;
+        *     TreeNode left;
+        *     TreeNode right;
+        *     TreeNode() {}
+        *     TreeNode(int val) { this.val = val; }
+        *     TreeNode(int val, TreeNode left, TreeNode right) {
+        *         this.val = val;
+        *         this.left = left;
+        *         this.right = right;
+        *     }
+        * }
+        */
+        class Solution {
+            public boolean isSymmetric(TreeNode root) {
+                return check(root.left, root.right);
+            }
+
+            public boolean check(TreeNode p, TreeNode q) {
+                if (p == null && q == null) {
+                    return true;
+                }
+                if (p == null || q == null) {
+                    return false;
+                }
+                return p.val == q.val && check(p.left, q.right) && check(p.right, q.left); 
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(n)
+    - 迭代
+        ```
+        /**
+        * Definition for a binary tree node.
+        * public class TreeNode {
+        *     int val;
+        *     TreeNode left;
+        *     TreeNode right;
+        *     TreeNode() {}
+        *     TreeNode(int val) { this.val = val; }
+        *     TreeNode(int val, TreeNode left, TreeNode right) {
+        *         this.val = val;
+        *         this.left = left;
+        *         this.right = right;
+        *     }
+        * }
+        */
+        class Solution {
+            public boolean isSymmetric(TreeNode root) {
+                return check(root, root);
+            }
+
+            public boolean check(TreeNode u, TreeNode v) {
+                Queue<TreeNode> q = new LinkedList<TreeNode>();
+                q.offer(u);
+                q.offer(v);
+                while (!q.isEmpty()) {
+                    u = q.poll();
+                    v = q.poll();
+                    if (u == null && v == null) {
+                        continue;
+                    }
+                    if ((u == null || v == null) || (u.val != v.val)) {
+                        return false;
+                    }
+
+                    q.offer(u.left);
+                    q.offer(v.right);
+
+                    q.offer(u.right);
+                    q.offer(v.left);
+                }
+                return true;
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(n)
+
