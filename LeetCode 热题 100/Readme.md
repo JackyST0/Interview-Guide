@@ -3264,7 +3264,7 @@ lRUCache.get(4);    // 返回 4
 解释：[1,null,3] 和 [3,1] 都是高度平衡二叉搜索树。
 ```
 ![将有序数组转换为二叉搜索树-示例1(输入)](/相关图册/将有序数组转换为二叉搜索树-示例1(输入).jpg)     
-![将有序数组转换为二叉搜索树-示例1(输出)](/相关图册/将有序数组转换为二叉搜索树-示例1(输出).jpg)
+![将有序数组转换为二叉搜索树-示例1(输出)](/相关图册/将有序数组转换为二叉搜索树-示例1(输出).jpg)     
 ![将有序数组转换为二叉搜索树-示例2](/相关图册/将有序数组转换为二叉搜索树-示例2.jpg)
 - 题解
     - 中序遍历，总是选择中间位置左边的数字作为根节点
@@ -3346,3 +3346,95 @@ lRUCache.get(4);    // 返回 4
         - 时间复杂度：O(n)  
         - 空间复杂度：O(logn)
   
+## 43.验证二叉搜索树
+```
+给你一个二叉树的根节点 root ，判断其是否是一个有效的二叉搜索树。
+
+有效 二叉搜索树定义如下：
+
+节点的左子树只包含 小于 当前节点的数。
+节点的右子树只包含 大于 当前节点的数。
+所有左子树和右子树自身必须也是二叉搜索树。
+ 
+示例 1：
+输入：root = [2,1,3]
+输出：true
+
+示例 2：
+输入：root = [5,1,4,null,null,3,6]
+输出：false
+解释：根节点的值是 5 ，但是右子节点的值是 4 。
+```
+![验证二叉搜索树-示例1](/相关图册/验证二叉搜索树-示例1.jpg)     
+![验证二叉搜索树-示例2](/相关图册/验证二叉搜索树-示例2.jpg)
+- 题解
+    - 递归
+        ```
+        /**
+        * Definition for a binary tree node.
+        * public class TreeNode {
+        *     int val;
+        *     TreeNode left;
+        *     TreeNode right;
+        *     TreeNode() {}
+        *     TreeNode(int val) { this.val = val; }
+        *     TreeNode(int val, TreeNode left, TreeNode right) {
+        *         this.val = val;
+        *         this.left = left;
+        *         this.right = right;
+        *     }
+        * }
+        */
+        class Solution {
+            public boolean isValidBST(TreeNode root) {
+                return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+            }
+
+            public boolean isValidBST(TreeNode node, long lower, long upper) {
+                if (node == null) {
+                    return true;
+                }
+                if (node.val <= lower || node.val >= upper) {
+                    return false;
+                }
+                return isValidBST(node.left, lower, node.val) && isValidBST(node.right, node.val, upper);
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(n)
+    - 中序遍历
+        ```
+        /**
+        * Definition for a binary tree node.
+        * public class TreeNode {
+        *     int val;
+        *     TreeNode left;
+        *     TreeNode right;
+        *     TreeNode() {}
+        *     TreeNode(int val) { this.val = val; }
+        *     TreeNode(int val, TreeNode left, TreeNode right) {
+        *         this.val = val;
+        *         this.left = left;
+        *         this.right = right;
+        *     }
+        * }
+        */
+        class Solution {
+            public boolean isValidBST(TreeNode root) {
+                return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+            }
+
+            public boolean isValidBST(TreeNode node, long lower, long upper) {
+                if (node == null) {
+                    return true;
+                }
+                if (node.val <= lower || node.val >= upper) {
+                    return false;
+                }
+                return isValidBST(node.left, lower, node.val) && isValidBST(node.right, node.val, upper);
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(n)
