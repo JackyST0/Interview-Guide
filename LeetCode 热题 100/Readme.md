@@ -5456,6 +5456,78 @@ n 皇后问题 研究的是如何将 n 个皇后放置在 n×n 的棋盘上，�
         - 时间复杂度：O(n)  
         - 空间复杂度：O(n)
 
+## 70. 最小栈
+```
+设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
+
+实现 MinStack 类:
+
+MinStack() 初始化堆栈对象。
+void push(int val) 将元素val推入堆栈。
+void pop() 删除堆栈顶部的元素。
+int top() 获取堆栈顶部的元素。
+int getMin() 获取堆栈中的最小元素。
+
+示例 1:
+输入：
+["MinStack","push","push","push","getMin","pop","top","getMin"]
+[[],[-2],[0],[-3],[],[],[],[]]
+输出：
+[null,null,null,null,-3,null,0,-2]
+解释：
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   --> 返回 -3.
+minStack.pop();
+minStack.top();      --> 返回 0.
+minStack.getMin();   --> 返回 -2.
+```
+- 题解
+    - 辅助栈
+        ```
+        class MinStack {
+            Deque<Integer> xStack;
+            Deque<Integer> minStack;
+
+            public MinStack() {
+                xStack = new LinkedList<Integer>();
+                minStack = new LinkedList<Integer>();
+                minStack.push(Integer.MAX_VALUE);
+            }
+            
+            public void push(int val) {
+                xStack.push(val);
+                minStack.push(Math.min(minStack.peek(), val));
+            }
+            
+            public void pop() {
+                xStack.pop();
+                minStack.pop();        
+            }
+            
+            public int top() {
+                return xStack.peek();
+            }
+            
+            public int getMin() {
+                return minStack.peek();
+            }
+        }
+
+        /**
+        * Your MinStack object will be instantiated and called as such:
+        * MinStack obj = new MinStack();
+        * obj.push(val);
+        * obj.pop();
+        * int param_3 = obj.top();
+        * int param_4 = obj.getMin();
+        */
+        ```
+        - 时间复杂度：O(1)  
+        - 空间复杂度：O(n)
+
 
 
 
