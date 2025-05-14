@@ -5829,12 +5829,11 @@ minStack.getMin();   --> 返回 -2.
 
 例如 arr = [2,3,4] 的中位数是 3 。
 例如 arr = [2,3] 的中位数是 (2 + 3) / 2 = 2.5 。
+
 实现 MedianFinder 类:
 
 MedianFinder() 初始化 MedianFinder 对象。
-
 void addNum(int num) 将数据流中的整数 num 添加到数据结构中。
-
 double findMedian() 返回到目前为止所有元素的中位数。与实际答案相差 10-5 以内的答案将被接受。
 
 示例 1：
@@ -5895,4 +5894,82 @@ medianFinder.findMedian(); // return 2.0
         ```
         - 时间复杂度：O(logn)  
         - 空间复杂度：O(n)
+
+## 77. 买卖股票的最佳时机
+```
+给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。
+
+你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。
+
+返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。
+
+示例 1：
+输入：[7,1,5,3,6,4]
+输出：5
+解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+
+示例 2：
+输入：prices = [7,6,4,3,1]
+输出：0
+解释：在这种情况下, 没有交易完成, 所以最大利润为 0。
+```
+- 题解
+    - 一次遍历
+        ```
+        class Solution {
+            public int maxProfit(int[] prices) {
+                int minprice = Integer.MAX_VALUE;
+                int maxprofit = 0;
+                for (int i = 0; i < prices.length; i++) {
+                    if (prices[i] < minprice) {
+                        minprice = prices[i];
+                    } else if (prices[i] - minprice > maxprofit) {
+                        maxprofit = prices[i] - minprice;
+                    }
+                }
+                return maxprofit;
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
+
+## 77. 跳跃游戏
+```
+给你一个非负整数数组 nums ，你最初位于数组的 第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。
+
+判断你是否能够到达最后一个下标，如果可以，返回 true ；否则，返回 false 。
+
+示例 1：
+输入：nums = [2,3,1,1,4]
+输出：true
+解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。
+
+示例 2：
+输入：nums = [3,2,1,0,4]
+输出：false
+解释：无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0 ， 所以永远不可能到达最后一个下标。
+```
+- 题解
+    - 贪心
+        ```
+        class Solution {
+            public boolean canJump(int[] nums) {
+                int n = nums.length;
+                int rightmost = 0;
+                for (int i = 0; i < n; ++i) {
+                    if (i <= rightmost) {
+                        rightmost = Math.max(rightmost, i + nums[i]);
+                        if (rightmost >= n - 1) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1)
 
