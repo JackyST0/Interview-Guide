@@ -6913,6 +6913,359 @@ i + j < n
         - 时间复杂度：O(mn)  
         - 空间复杂度：O(mn) 
 
+## 95. 编辑距离
+```
+给你两个单词 word1 和 word2， 请返回将 word1 转换成 word2 所使用的最少操作数  。
+
+你可以对一个单词进行如下三种操作：
+
+插入一个字符
+删除一个字符
+替换一个字符
+ 
+示例 1：
+输入：word1 = "horse", word2 = "ros"
+输出：3
+解释：
+horse -> rorse (将 'h' 替换为 'r')
+rorse -> rose (删除 'r')
+rose -> ros (删除 'e')
+
+示例 2：
+输入：word1 = "intention", word2 = "execution"
+输出：5
+解释：
+intention -> inention (删除 't')
+inention -> enention (将 'i' 替换为 'e')
+enention -> exention (将 'n' 替换为 'x')
+exention -> exection (将 'n' 替换为 'c')
+exection -> execution (插入 'u')
+```
+- 题解
+    - 动态规划
+        ```
+        class Solution {
+            public int minDistance(String word1, String word2) {
+                int n = word1.length();
+                int m = word2.length();
+
+                // 有一个字符串为空串
+                if (n * m == 0) {
+                    return n + m;
+                }
+
+                // DP 数组
+                int[][] D = new int[n + 1][m + 1];
+
+                // 边界状态初始化
+                for (int i = 0; i < n + 1; i++) {
+                    D[i][0] = i;
+                }
+                for (int j = 0; j < m + 1; j++) {
+                    D[0][j] = j;
+                }
+
+                // 计算所有 DP 值
+                for (int i = 1; i < n + 1; i++) {
+                    for (int j = 1; j < m + 1; j++) {
+                        int left = D[i - 1][j] + 1;
+                        int down = D[i][j - 1] + 1;
+                        int left_down = D[i - 1][j - 1];
+                        if (word1.charAt(i - 1) != word2.charAt(j - 1)) {
+                            left_down += 1;
+                        }
+                        D[i][j] = Math.min(left, Math.min(down, left_down));
+                    }
+                }
+                return D[n][m];
+            }
+        }
+        ```
+        - 时间复杂度：O(mn)  
+        - 空间复杂度：O(mn) 
+
+## 96. 只出现一次的数字
+```
+给你一个 非空 整数数组 nums ，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+
+你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。
+
+示例 1 ：
+输入：nums = [2,2,1]
+输出：1
+
+示例 2 ：
+输入：nums = [4,1,2,1,2]
+输出：4
+
+示例 3 ：
+输入：nums = [1]
+输出：1
+```
+- 题解
+    - 位运算
+        ```
+        class Solution {
+            public int singleNumber(int[] nums) {
+                int single = 0;
+                for (int num : nums) {
+                    single ^= num;
+                }
+                return single;
+            }
+        }                               
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1) 
+
+## 97. 多数元素
+```
+给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n/2 ⌋ 的元素。
+
+你可以假设数组是非空的，并且给定的数组总是存在多数元素。
+
+示例 1：
+输入：nums = [3,2,3]
+输出：3
+
+示例 2：
+输入：nums = [2,2,1,1,1,2,2]
+输出：2
+```
+- 题解
+    - 哈希表
+        ```
+        class Solution {
+            private Map<Integer, Integer> countNums(int[] nums) {
+                Map<Integer, Integer> counts = new HashMap<Integer, Integer>();
+                for (int num : nums) {
+                    if (!counts.containsKey(num)) {
+                        counts.put(num, 1);
+                    } else {
+                        counts.put(num, counts.get(num) + 1);
+                    }
+                }
+                return counts;
+            }
+
+            public int majorityElement(int[] nums) {
+                Map<Integer, Integer> counts = countNums(nums);
+
+                Map.Entry<Integer, Integer> majorityEntry = null;
+                for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
+                    if (majorityEntry == null || entry.getValue() > majorityEntry.getValue()) {
+                        majorityEntry = entry;
+                    }
+                }
+                
+                return majorityEntry.getKey();
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(n) 
+    - 排序
+        ```
+        class Solution {
+            public int majorityElement(int[] nums) {
+                Arrays.sort(nums);
+                return nums[nums.length / 2];
+            }
+        }
+        ```
+        - 时间复杂度：O(nlogn)  
+        - 空间复杂度：O(logn) 
+
+## 98. 颜色分类
+```
+给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地 对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+
+我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
+
+必须在不使用库内置的 sort 函数的情况下解决这个问题。
+
+示例 1：
+输入：nums = [2,0,2,1,1,0]
+输出：[0,0,1,1,2,2]
+
+示例 2：
+输入：nums = [2,0,1]
+输出：[0,1,2]
+```
+- 题解
+    - 单指针
+        ```
+        class Solution {
+            public void sortColors(int[] nums) {
+                int n = nums.length;
+                int ptr = 0;
+                for (int i = 0; i < n; ++i) {
+                    if (nums[i] == 0) {
+                        int temp = nums[i];
+                        nums[i] = nums[ptr];
+                        nums[ptr] = temp;
+                        ++ptr;
+                    }
+                }
+                for (int i = ptr; i < n; ++i) {
+                    if (nums[i] == 1) {
+                        int temp = nums[i];
+                        nums[i] = nums[ptr];
+                        nums[ptr] = temp;
+                        ++ptr;
+                    }
+                }
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1) 
+    - 双指针
+        ```
+        class Solution {
+            public void sortColors(int[] nums) {
+                int n = nums.length;
+                int p0 = 0, p1 = 0;
+                for (int i = 0; i < n; ++i) {
+                    if (nums[i] == 1) {
+                        int temp = nums[i];
+                        nums[i] = nums[p1];
+                        nums[p1] = temp;
+                        ++p1;
+                    } else if (nums[i] == 0) {
+                        int temp = nums[i];
+                        nums[i] = nums[p0];
+                        nums[p0] = temp;
+                        if (p0 < p1) {
+                            temp = nums[i];
+                            nums[i] = nums[p1];
+                            nums[p1] = temp;
+                        }
+                        ++p0;
+                        ++p1;
+                    }
+                }
+            }
+        }
+        ```
+        - 时间复杂度：O(n)  
+        - 空间复杂度：O(1) 
+
+## 99. 下一个排列
+```
+整数数组的一个 排列  就是将其所有成员以序列或线性顺序排列。
+
+例如，arr = [1,2,3] ，以下这些都可以视作 arr 的排列：[1,2,3]、[1,3,2]、[3,1,2]、[2,3,1] 。
+整数数组的 下一个排列 是指其整数的下一个字典序更大的排列。更正式地，如果数组的所有排列根据其字典顺序从小到大排列在一个容器中，那么数组的 下一个排列 就是在这个有序容器中排在它后面的那个排列。如果不存在下一个更大的排列，那么这个数组必须重排为字典序最小的排列（即，其元素按升序排列）。
+
+例如，arr = [1,2,3] 的下一个排列是 [1,3,2] 。
+类似地，arr = [2,3,1] 的下一个排列是 [3,1,2] 。
+而 arr = [3,2,1] 的下一个排列是 [1,2,3] ，因为 [3,2,1] 不存在一个字典序更大的排列。
+给你一个整数数组 nums ，找出 nums 的下一个排列。
+
+必须 原地 修改，只允许使用额外常数空间。
+
+示例 1：
+输入：nums = [1,2,3]
+输出：[1,3,2]
+
+示例 2：
+输入：nums = [3,2,1]
+输出：[1,2,3]
+
+示例 3：
+输入：nums = [1,1,5]
+输出：[1,5,1]
+```
+- 题解
+    - 两遍扫描
+        ```
+        class Solution {
+            public void nextPermutation(int[] nums) {
+                int i = nums.length - 2;
+                while (i >= 0 && nums[i] >= nums[i + 1]) {
+                    i--;
+                }
+                if (i >= 0) {
+                    int j = nums.length - 1;
+                    while (j >= 0 && nums[i] >= nums[j]) {
+                        j--;
+                    }
+                    swap(nums, i, j);
+                }
+                reverse(nums, i + 1);
+            }
+
+            public void swap(int[] nums, int i, int j) {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+            }
+
+            public void reverse(int[] nums, int start) {
+                int left = start, right = nums.length - 1;
+                while (left < right) {
+                    swap(nums, left, right);
+                    left++;
+                    right--;
+                }
+            }
+        }
+        ```
+        - 时间复杂度：O(N)  
+        - 空间复杂度：O(1) 
+
+## 100. 寻找重复数
+```
+给定一个包含 n + 1 个整数的数组 nums ，其数字都在 [1, n] 范围内（包括 1 和 n），可知至少存在一个重复的整数。
+
+假设 nums 只有 一个重复的整数 ，返回 这个重复的数 。
+
+你设计的解决方案必须 不修改 数组 nums 且只用常量级 O(1) 的额外空间。
+
+示例 1：
+输入：nums = [1,3,4,2,2]
+输出：2
+
+示例 2：
+输入：nums = [3,1,3,4,2]
+输出：3
+
+示例 3 :
+输入：nums = [3,3,3,3,3]
+输出：3
+```
+- 题解
+    - 二分查找
+        ```
+        class Solution {
+            public int findDuplicate(int[] nums) {
+                int n = nums.length;
+                int l = 1, r = n - 1, ans = -1;
+                while (l <= r) {
+                    int mid = (l + r) >> 1;
+                    int cnt = 0;
+                    for (int i = 0; i < n; ++i) {
+                        if (nums[i] <= mid) {
+                            cnt++;
+                        }
+                    }
+                    if (cnt <= mid) {
+                        l = mid + 1;
+                    } else {
+                        r = mid - 1;
+                        ans = mid;
+                    }
+                }
+                return ans;
+            }
+        }
+        ```
+        - 时间复杂度：O(nlogn)  
+        - 空间复杂度：O(1) 
+
+
+
 
 
 
