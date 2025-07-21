@@ -94,12 +94,42 @@
             }
         }
         ```
-        - 时间复杂度：O(nklogk)  
-        - 空间复杂度：O(nk)
+        - 时间复杂度：O(nklogk)，其中 n 是 strs 中的字符串的数量，k 是 strs 中的字符串的最大长度      
+        - 空间复杂度：O(nk)，其中 n 是 strs 中的字符串的数量，k 是 strs 中的字符串的最大长度
+    - 计数
+        ```
+        class Solution {
+            public List<List<String>> groupAnagrams(String[] strs) {
+                Map<String, List<String>> map = new HashMap<String, List<String>>();
+                for (String str : strs) {
+                    int[] counts = new int[26];s
+                    int length = str.length();
+                    for (int i = 0; i < length; i++) {
+                        counts[str.charAt(i) - 'a']++;
+                    }
+                    // 将每个出现次数大于 0 的字母和出现次数按顺序拼接成字符串，作为哈希表的键
+                    StringBuffer sb = new StringBuffer();
+                    for (int i = 0; i < 26; i++) {
+                        if (counts[i] != 0) {
+                            sb.append((char) ('a' + i));
+                            sb.append(counts[i]);
+                        }
+                    }
+                    String key = sb.toString();
+                    List<String> list = map.getOrDefault(key, new ArrayList<String>());
+                    list.add(str);
+                    map.put(key, list);
+                }
+                return new ArrayList<List<String>>(map.values());
+            }
+        }
+        ```
+        - 时间复杂度：O(n(k+∣Σ∣))，其中 n 是 strs 中的字符串的数量，k 是 strs 中的字符串的最大长度，Σ 是字符集，在本题中字符集为所有小写字母，∣Σ∣=26        
+        - 空间复杂度：O(n(k+∣Σ∣))，其中 n 是 strs 中的字符串的数量，k 是 strs 中的字符串的最大长度，Σ 是字符集，在本题中字符集为所有小写字母，∣Σ∣=26
 
 ## 3. 最长连续序列
 ```
-给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
+给定一个未排序的整数s数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
 
 请你设计并实现时间复杂度为 O(n) 的算法解决此问题。
 
