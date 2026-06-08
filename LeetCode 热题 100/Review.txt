@@ -3,45 +3,130 @@
 核心思路是哈希表，用空间换时间，避免两层循环暴力查找。
 遍历数组nums时，当前数是nums[i]，想要凑成target，就需要另一个数target - nums[i]。所以每次先判断哈希表中是否已经存在target - nums[i]，如果存在，说明之前遍历过的某个数可以和当前数配对，直接返回两个下标；如果不存在，就把当前数和当前下标存入哈希表，方便后面的数来匹配。
 注意哈希表的key存数组中的值，value存这个值对应的下标。
-for (int i = 0; i < nums.length; i++) { if (hashtable.containsKey(target - nums[i])) return new int[]{hashtable.get(target - nums[i]), i}; hashtable.put(nums[i], i); } return new int[0];
+伪代码：
+初始化map
+for i 从0遍历到nums.length - 1:
+    need = target - nums[i]
+    if map中存在need:
+        return [map.get(need), i]
+    map.put(nums[i], i)
+return 空数组
 
 2、字母异位词分组
 核心思路也是哈希表，不过这次哈希表的key是排序后的字符串，value是所有属于同一组字母异位词的原字符串列表。
 字母异位词的特点是字符相同、顺序不同，所以把每个字符串转成字符数组后排序，排序后的结果就可以作为统一标识。比如"eat"、"tea"、"ate"排序后都是"aet"，因此会被放到同一个列表中。
 遍历strs数组时，先使用str.toCharArray()转成字符数组，再用Arrays.sort()排序，然后new String(array)得到key。接着通过map.getOrDefault(key, new ArrayList<String>())取出当前分组列表，把原字符串加入列表后再放回map。最后返回new ArrayList<List<String>>(map.values())。
-for (String str : strs) { char[] array = str.toCharArray(); Arrays.sort(array); String key = new String(array); List<String> list = map.getOrDefault(key, new ArrayList<String>()); list.add(str); map.put(key, list); } return new ArrayList<List<String>>(map.values());
+伪代码：
+初始化map，key为排序后的字符串，value为字符串列表
+for str 遍历strs:
+    array = str转成字符数组
+    对array排序
+    key = new String(array)
+    list = map.getOrDefault(key, 空列表)
+    list.add(str)
+    map.put(key, list)
+return map中所有value组成的列表
 
 3、最长连续序列
 核心思路是HashSet。先把数组中的数字全部放入set中，一方面可以去重，另一方面可以用O(1)的时间判断某个数字是否存在。
 遍历set时，不是每个数字都往后找连续序列，而是只从一个连续序列的起点开始找。判断起点的方法是：如果set中不包含num - 1，说明num前面没有更小的连续数字，那么num就是一个连续序列的起点；如果包含num - 1，说明num在某个序列中间，直接跳过，避免重复计算。
 找到起点后，初始化currentNum=num、currentStreak=1，然后不断判断set中是否包含currentNum + 1。如果包含，就让currentNum和currentStreak都往后推进。每次算完一个序列后，用Math.max更新longestStreak。
-longestStreak = 0; for (int num : set) { if (!set.contains(num - 1)) { int currentNum = num; int currentStreak = 1; while (set.contains(currentNum + 1)) { currentNum++; currentStreak++; } longestStreak = Math.max(longestStreak, currentStreak); } }
+伪代码：
+把nums中所有数字放入set
+longestStreak = 0
+for num 遍历set:
+    if set中不存在num - 1:
+        currentNum = num
+        currentStreak = 1
+        while set中存在currentNum + 1:
+            currentNum++
+            currentStreak++
+        longestStreak = max(longestStreak, currentStreak)
+return longestStreak
 
 二、双指针
 1、移动零
 核心思路是双指针。left表示下一个非零元素应该放的位置，right负责从左到右扫描数组。
 当nums[right]不等于0时，说明遇到了一个需要保留到前面的非零元素，就把nums[right]和nums[left]交换，然后left右移一位。无论是否交换，right每轮都要右移，继续扫描后面的元素。
 这样遍历结束后，所有非零元素都会保持相对顺序移动到数组前面，剩下的位置自然就是0。
-while (right < n) { if (nums[right] != 0) { swap(nums, left, right); left++; } right++; }
-int temp = nums[left]; nums[left] = nums[right]; nums[right] = temp;
+伪代码：
+left = 0
+right = 0
+while right < nums.length:
+    if nums[right] != 0:
+        交换nums[left]和nums[right]
+        left++
+    right++
 
 2、盛最多水的容器
 核心思路是双指针，一个指针left指向数组开头，一个指针right指向数组末尾。
 容器面积由两部分决定：宽度right - left，以及两边高度中的较小值min(height[left], height[right])。每轮先计算当前面积并更新最大值，然后移动较短的那一边，因为面积受短板限制，移动较高的一边不会让短板变高，只有移动较短的一边才可能找到更大的面积。
 如果height[left] <= height[right]，左边是短板，left右移；否则右边是短板，right左移。循环条件是left < right。
-while (left < right) { ans = Math.max(ans, Math.min(height[left], height[right]) * (right - left)); if (height[left] <= height[right]) { left++; } else { right--; } }
+伪代码：
+left = 0
+right = height.length - 1
+ans = 0
+while left < right:
+    area = min(height[left], height[right]) * (right - left)
+    ans = max(ans, area)
+    if height[left] <= height[right]:
+        left++
+    else:
+        right--
+return ans
 
 3、三数之和
 核心思路是排序+双指针。先对数组Arrays.sort(nums)，排序后可以方便去重，也可以根据sum大小移动左右指针。
 外层for循环固定第一个数nums[i]。如果nums[i] > 0，因为数组已经升序，后面的数都不会比它小，三数之和一定大于0，可以直接结束循环。为了避免重复答案，如果i > 0并且nums[i] == nums[i - 1]，说明这个数作为第一个数已经处理过，需要continue跳过。
 固定nums[i]后，初始化left = i + 1，right = nums.length - 1。然后在left < right时计算sum = nums[i] + nums[left] + nums[right]。如果sum == 0，就把这三个数加入结果列表，并且移动left和right跳过重复值；如果sum < 0，说明当前和太小，需要left右移让和变大；如果sum > 0，说明当前和太大，需要right左移让和变小。
 最后返回结果列表。
+伪代码：
+对nums排序
+初始化结果列表res
+for i 从0遍历到nums.length - 1:
+    if nums[i] > 0:
+        break
+    if i > 0 且 nums[i] == nums[i - 1]:
+        continue
+    left = i + 1
+    right = nums.length - 1
+    while left < right:
+        sum = nums[i] + nums[left] + nums[right]
+        if sum == 0:
+            res.add([nums[i], nums[left], nums[right]])
+            while left < right 且 nums[left] == nums[left + 1]:
+                left++
+            while left < right 且 nums[right] == nums[right - 1]:
+                right--
+            left++
+            right--
+        else if sum < 0:
+            left++
+        else:
+            right--
+return res
 
 4、接雨水
 核心思路是双指针。left和right分别从数组两端向中间移动，同时维护leftMax和rightMax，表示当前位置左边和右边见过的最高柱子。
 接雨水的关键是当前位置能接多少水，取决于左右两边较矮的最高柱子。每轮先更新leftMax = Math.max(leftMax, height[left])，rightMax = Math.max(rightMax, height[right])。
 如果height[left] < height[right]，说明左侧短板更确定，此时left位置能接的水是leftMax - height[left]，然后left右移；否则处理right位置，能接的水是rightMax - height[right]，然后right左移。
 循环直到left和right相遇，最后返回累加的雨水量。
+伪代码：
+left = 0
+right = height.length - 1
+leftMax = 0
+rightMax = 0
+ans = 0
+while left < right:
+    leftMax = max(leftMax, height[left])
+    rightMax = max(rightMax, height[right])
+    if height[left] < height[right]:
+        ans += leftMax - height[left]
+        left++
+    else:
+        ans += rightMax - height[right]
+        right--
+return ans
 
 三、滑动窗口
 1、无重复字符的最长子串
@@ -49,32 +134,124 @@ while (left < right) { ans = Math.max(ans, Math.min(height[left], height[right])
 初始化右指针rk = -1，表示窗口一开始为空。外层for循环中的i表示左指针，每次循环代表左边界移动到i。若i != 0，需要先从set中移除s.charAt(i - 1)，表示窗口左边界右移了一位。
 然后尽量移动右指针：只要rk + 1没有越界，并且set中不包含s.charAt(rk + 1)，就把这个字符加入set，并让rk右移。这个while循环结束时，说明再往右就会出现重复字符，当前窗口已经是以i为左边界的最长无重复子串。
 最后用rk - i + 1更新答案ans。
+伪代码：
+初始化set
+rk = -1
+ans = 0
+for i 从0遍历到s.length - 1:
+    if i != 0:
+        set.remove(s.charAt(i - 1))
+    while rk + 1 < s.length 且 set中不存在s.charAt(rk + 1):
+        set.add(s.charAt(rk + 1))
+        rk++
+    ans = max(ans, rk - i + 1)
+return ans
 
 2、找到字符串中所有字母异位词
 核心思路是固定长度滑动窗口。因为要找的是p的字母异位词，所以窗口长度必须等于p.length()，只需要比较窗口内每个字母的出现次数是否和p完全相同。
 先判断s.length()是否小于p.length()，如果小于，s中不可能存在p的异位词，直接返回空列表。然后初始化两个长度为26的数组sCount和pCount，分别统计s当前窗口和p中每个字母出现的次数，字母下标通过charAt(i) - 'a'得到。
 先处理s的前pLen个字符和p的全部字符，如果两个计数数组相同，说明下标0是一个答案。接着开始滑动窗口：每次移除窗口最左边的字符，即sCount[s.charAt(i) - 'a']--；再加入窗口右边新进来的字符，即sCount[s.charAt(i + pLen) - 'a']++。移动后如果两个数组相同，就把新窗口左边界i + 1加入结果列表。
+伪代码：
+初始化结果列表res
+sLen = s.length
+pLen = p.length
+if sLen < pLen:
+    return res
+初始化sCount[26]和pCount[26]
+for i 从0遍历到pLen - 1:
+    sCount[s.charAt(i) - 'a']++
+    pCount[p.charAt(i) - 'a']++
+if sCount等于pCount:
+    res.add(0)
+for i 从0遍历到sLen - pLen - 1:
+    sCount[s.charAt(i) - 'a']--
+    sCount[s.charAt(i + pLen) - 'a']++
+    if sCount等于pCount:
+        res.add(i + 1)
+return res
 
 四、子串
 1、和为K的子数组
 可以用枚举的方法来解决。题目要求连续子数组，所以可以固定一个端点，再向另一个方向枚举所有连续子数组。
 外层for循环固定子数组右端点start，每次开始时初始化sum = 0。内层for循环从end = start开始向左遍历，一边把nums[end]累加到sum中，一边判断sum是否等于k。如果等于k，说明找到了一个以start为右端点的连续子数组，count加一。
 这种方法逻辑直观，但时间复杂度是O(n^2)。更优解可以使用前缀和+哈希表，把查找某个前缀和出现次数的过程优化到O(1)。
+伪代码：
+count = 0
+for start 从0遍历到nums.length - 1:
+    sum = 0
+    for end 从start递减到0:
+        sum += nums[end]
+        if sum == k:
+            count++
+return count
+
+前缀和+哈希表伪代码：
+map.put(0, 1)
+preSum = 0
+count = 0
+for num 遍历nums:
+    preSum += num
+    if map中存在preSum - k:
+        count += map.get(preSum - k)
+    map.put(preSum, map.getOrDefault(preSum, 0) + 1)
+return count
 
 2、滑动窗口最大值
 核心思路是单调队列。队列中维护当前窗口里可能成为最大值的元素，并保持从队首到队尾单调递减，所以队首元素永远是当前窗口最大值。
 遍历数组时，先处理窗口左侧滑出的元素：如果i > 0，并且队首元素正好等于即将离开窗口的nums[i - 1]，就把队首弹出。然后处理新进入窗口的nums[j]：为了保持队列递减，需要把队尾所有小于nums[j]的元素弹出，因为它们既比nums[j]小，又比nums[j]更早离开窗口，以后不可能成为最大值。
 清理完成后，把nums[j]加入队尾。只要窗口已经形成，也就是i >= 0，就把队首元素加入结果列表res。
 如果队列中存的是下标而不是值，判断过期元素会更方便：当deque.peekFirst() <= j - k时，说明队首下标已经不在窗口内，需要弹出。
+伪代码：
+初始化双端队列deque，队列中存下标
+初始化结果数组res
+for j 从0遍历到nums.length - 1:
+    while deque不为空 且 deque队首下标 <= j - k:
+        deque.pollFirst()
+    while deque不为空 且 nums[deque队尾下标] <= nums[j]:
+        deque.pollLast()
+    deque.offerLast(j)
+    if j >= k - 1:
+        res.add(nums[deque队首下标])
+return res
 
 3、最小覆盖子串
-使用哈希表+滑动窗口的思路来解决
+使用哈希表+滑动窗口的思路来解决。
 首先初始化两个哈希表ori和cnt。ori用于统计目标字符串t中每个字符需要出现的次数，cnt用于统计当前滑动窗口中这些字符已经出现的次数。先遍历t，把每个字符出现的次数存入ori。
 接着初始化左右指针l、r，其中l = 0，r = -1表示窗口一开始为空；同时初始化len为最大值，ansL和ansR为-1，用于记录当前找到的最短答案区间。
-然后移动右指针r不断扩大窗口。如果s.charAt(r)是t中需要的字符，就在cnt(l)是t中需要的字符，就在cnt中中把它的次数加一。每次扩大窗口后，用check()判断当前窗口是否已经覆盖t。
-如果窗口已经满足要求，就进入内部while循环尝试收缩左边界l。收缩前先判断当前窗口长度r - l + 1是否比len更小，如果更小就更新len、ansL、ansR。然后准备移出左边界字符：如果s.charAt把它的次数减一，最后l右移。
+然后移动右指针r不断扩大窗口。如果s.charAt(r)是t中需要的字符，就在cnt中把它的次数加一。每次扩大窗口后，用check()判断当前窗口是否已经覆盖t。
+如果窗口已经满足要求，就进入内部while循环尝试收缩左边界l。收缩前先判断当前窗口长度r - l + 1是否比len更小，如果更小就更新len、ansL、ansR。然后准备移出左边界字符：如果s.charAt(l)是t中需要的字符，就在cnt中把它的次数减一，最后l右移。
 check()函数的作用是遍历ori中的每个字符，判断cnt中对应字符的出现次数是否都大于等于ori中的要求次数。只要有一个字符数量不够，就返回false；全部满足才返回true。
 最后如果ansL还是-1，说明没有找到覆盖t的子串，返回空字符串；否则返回s.substring(ansL, ansR)。这里ansR是右开边界，所以更新答案时通常写成ansR = l + len。
+伪代码：
+初始化ori和cnt两个哈希表
+for c 遍历t:
+    ori[c]++
+l = 0
+r = -1
+len = 最大值
+ansL = -1
+ansR = -1
+while r < s.length:
+    r++
+    if r < s.length 且 ori中存在s.charAt(r):
+        cnt[s.charAt(r)]++
+    while check()为true 且 l <= r:
+        if r - l + 1 < len:
+            len = r - l + 1
+            ansL = l
+            ansR = l + len
+        if ori中存在s.charAt(l):
+            cnt[s.charAt(l)]--
+        l++
+if ansL == -1:
+    return ""
+return s.substring(ansL, ansR)
+
+check()伪代码：
+for key 遍历ori中的所有字符:
+    if cnt.getOrDefault(key, 0) < ori.get(key):
+        return false
+return true
 
 
 
