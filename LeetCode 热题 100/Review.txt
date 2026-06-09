@@ -253,5 +253,18 @@ for key 遍历ori中的所有字符:
         return false
 return true
 
+五、普通数组
+1、最大子数组和
+采用动态规划的思路来解决。核心是定义一个状态pre，表示“以当前元素结尾的连续子数组的最大和”。因为题目要求子数组必须连续，所以遍历到当前数字x时，只有两种选择：要么把x接在前面的连续子数组后面，也就是pre + x；要么从x重新开始一个新的连续子数组。
+所以状态转移方程是pre = Math.max(pre + x, x)。其中pre + x表示继续之前的子数组，x表示放弃之前的结果、从当前元素重新开始。
+同时用maxAns记录遍历过程中出现过的最大pre值，也就是全局最大子数组和。初始化时pre可以设为0，maxAns设为nums[0]，这样即使数组全是负数，也能正确返回最大的那个负数。
+伪代码：
+pre = 0
+maxAns = nums[0]
+for x 遍历nums:
+    pre = max(pre + x, x)
+    maxAns = max(maxAns, pre)
+return maxAns
+
 
 
