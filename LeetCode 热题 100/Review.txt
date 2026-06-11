@@ -285,5 +285,24 @@ for interval 遍历intervals:
         merged最后一个区间的右边界 = max(merged最后一个区间的右边界, R)
 return merged转换成二维数组
 
+3、轮转数组
+采用翻转数组的思路来解决。题目要求把数组向右轮转k位，也就是原来末尾的k个元素要移动到数组前面，前面的元素整体向后移动。
+首先需要执行k %= nums.length，因为如果k大于数组长度，完整轮转一圈后数组会回到原样。例如数组长度为7，向右轮转10位，实际效果等同于向右轮转3位。
+三次翻转的核心过程是：先翻转整个数组，让原来末尾的k个元素来到前面；然后翻转前k个元素，把这部分元素内部顺序恢复正确；最后翻转剩下的n - k个元素，把后半部分顺序也恢复正确。
+例如nums = [1,2,3,4,5,6,7]，k = 3。先整体翻转得到[7,6,5,4,3,2,1]，再翻转前3个得到[5,6,7,4,3,2,1]，最后翻转后4个得到[5,6,7,1,2,3,4]。
+reverse函数使用双指针，start指向要翻转区间的开头，end指向区间的结尾。只要start < end，就交换nums[start]和nums[end]，然后start右移、end左移，直到整个区间翻转完成。
+伪代码：
+k = k % nums.length
+reverse(nums, 0, nums.length - 1)
+reverse(nums, 0, k - 1)
+reverse(nums, k, nums.length - 1)
+
+reverse伪代码：
+while start < end:
+    交换nums[start]和nums[end]
+    start++
+    end--
+
+
 
 
