@@ -603,26 +603,19 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
         ```
         - 时间复杂度：O(n²)  
         - 空间复杂度：O(1)
-    - 前缀和
+    - 前缀和 + 哈希表
         ```
         class Solution {
             public int subarraySum(int[] nums, int k) {
-                int len = nums.length;
-                // 计算前缀和数组
-                int[] preSum = new int[len + 1];
-                preSum[0] = 0;
-                for (int i = 0; i < len; i++) {
-                    preSum[i + 1] = preSum[i] + nums[i];
-                }
-
-                int count = 0;
-                for (int left = 0; left < len; left++) {
-                    for (int right = left; right < len; right++) {
-                        // 区间和 [left..right],注意下标偏移
-                        if (preSum[right + 1] - preSum[left] == k) {
-                            count++;
-                        }
+                int count = 0, pre = 0;
+                HashMap<Integer, Integer> mp = new HashMap<>();
+                mp.put(0, 1);
+                for (int i = 0; i < nums.length; i++) {
+                    pre += nums[i];
+                    if (mp.containsKey(pre - k)) {
+                        count += mp.get(pre - k);
                     }
+                    mp.put(pre, mp.getOrDefault(pre, 0) + 1);
                 }
                 return count;
             }
