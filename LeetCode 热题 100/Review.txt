@@ -341,6 +341,27 @@ for i 从0遍历到n - 1:
         return i + 1
 return n + 1
 
+六、矩阵
+1、矩阵置零
+采用标记数组的思路来解决。题目要求如果matrix[i][j]为0，就把第i行和第j列全部置为0。不能一边遍历一边直接置零，否则新置出来的0会影响后续判断，导致本来不该置零的行列也被置零。
+所以先用两个标记数组row和col记录哪些行、哪些列需要被置零。row[i]表示第i行是否需要置零，col[j]表示第j列是否需要置零。
+第一轮遍历整个矩阵，如果发现matrix[i][j] == 0，就把row[i]和col[j]都标记为true，表示这一行和这一列后面都要变成0。
+第二轮再次遍历整个矩阵，如果当前位置满足row[i]为true或者col[j]为true，说明它所在的行或列需要置零，就把matrix[i][j]改成0。
+伪代码：
+m = matrix.length
+n = matrix[0].length
+初始化row数组，长度为m，默认false
+初始化col数组，长度为n，默认false
+for i 从0遍历到m - 1:
+    for j 从0遍历到n - 1:
+        if matrix[i][j] == 0:
+            row[i] = true
+            col[j] = true
+for i 从0遍历到m - 1:
+    for j 从0遍历到n - 1:
+        if row[i] == true 或者 col[j] == true:
+            matrix[i][j] = 0
+
 
 
 
