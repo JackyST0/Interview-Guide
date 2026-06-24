@@ -391,6 +391,21 @@ for i 从0遍历到total - 1:
     column = column + directions[directionIndex][1]
 return order
 
+3、旋转图像
+采用辅助数组的思路来解决。题目要求把n x n矩阵顺时针旋转90度，并且最终结果要写回原来的matrix中。
+顺时针旋转90度时，原矩阵中位置(i, j)的元素，会移动到新矩阵中的位置(j, n - i - 1)。例如第一行的元素会变成最后一列，第二行的元素会变成倒数第二列。
+所以可以先创建一个同样大小的辅助数组matrix_new，用来保存旋转后的结果。第一轮双重循环遍历原矩阵，把matrix[i][j]放到matrix_new[j][n - i - 1]。
+因为方法返回值是void，题目要求直接修改原数组，所以不能只让matrix指向matrix_new，而是需要第二轮双重循环，把matrix_new中的每个元素重新复制回matrix对应位置。
+伪代码：
+n = matrix.length
+初始化matrix_new[n][n]
+for i 从0遍历到n - 1:
+    for j 从0遍历到n - 1:
+        matrix_new[j][n - i - 1] = matrix[i][j]
+for i 从0遍历到n - 1:
+    for j 从0遍历到n - 1:
+        matrix[i][j] = matrix_new[i][j]
+
 
 
 
