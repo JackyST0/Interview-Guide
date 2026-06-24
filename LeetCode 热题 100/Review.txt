@@ -406,6 +406,18 @@ for i 从0遍历到n - 1:
     for j 从0遍历到n - 1:
         matrix[i][j] = matrix_new[i][j]
 
+4、搜索二维矩阵 II
+采用直接查找的思路来解决。最朴素的做法就是遍历矩阵中的每一个元素，只要发现某个元素等于target，就立即返回true；如果全部遍历完都没有找到，说明target不存在，返回false。
+代码中使用增强for循环，外层for (int[] row : matrix)表示逐行遍历矩阵，每次row就是矩阵中的一行；内层for (int element : row)表示遍历当前行中的每个元素。
+这种方法没有利用题目中“每行升序、每列升序”的性质，所以实现最简单，但是效率不是最优。后续也可以用从右上角或左下角开始搜索的方式优化到O(m + n)。
+伪代码：
+for row 遍历matrix中的每一行:
+    for element 遍历row中的每个元素:
+        if element == target:
+            return true
+return false
+
+
 
 
 
