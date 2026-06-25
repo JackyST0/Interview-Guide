@@ -417,6 +417,30 @@ for row 遍历matrix中的每一行:
             return true
 return false
 
+七、链表
+1、相交链表
+采用双指针的思路来解决。定义两个指针pA和pB，分别从链表A的头节点headA、链表B的头节点headB开始向后走。
+如果两个链表相交，那么从相交节点开始，后面的节点是完全相同的。难点在于两个链表相交前的长度可能不一样，所以两个指针直接同时走，可能无法在第一次遍历时对齐。
+解决方法是：pA走到链表A末尾后，切换到headB继续走；pB走到链表B末尾后，切换到headA继续走。这样两个指针最终都会走过“链表A长度 + 链表B长度”的距离，长度差就被抵消了。
+如果两个链表相交，pA和pB会在第一个相交节点相遇，此时pA == pB，循环结束并返回该节点。如果两个链表不相交，两个指针最终都会同时走到null，此时pA == pB == null，循环也会结束，返回null。
+开头先判断headA或headB是否为null，如果有一个链表为空，就不可能相交，直接返回null。
+伪代码：
+if headA == null 或者 headB == null:
+    return null
+pA = headA
+pB = headB
+while pA != pB:
+    if pA == null:
+        pA = headB
+    else:
+        pA = pA.next
+    if pB == null:
+        pB = headA
+    else:
+        pB = pB.next
+return pA
+
+
 
 
 
