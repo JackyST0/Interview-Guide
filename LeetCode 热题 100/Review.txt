@@ -440,6 +440,21 @@ while pA != pB:
         pB = pB.next
 return pA
 
+2、反转链表
+采用迭代的思路来解决。核心是从前往后遍历链表，并在遍历过程中逐个改变节点的next指向，让它从“指向后一个节点”变成“指向前一个节点”。
+需要维护三个指针：prev表示当前节点反转后应该指向的前一个节点，初始为null；curr表示当前正在处理的节点，初始为head；next用于临时保存curr.next，防止改变curr.next后丢失后面的链表。
+每轮循环先保存next = curr.next，然后执行curr.next = prev，把当前节点的指针反转。接着prev = curr，让prev移动到当前节点；curr = next，让curr继续处理原链表中的下一个节点。
+当curr变成null时，说明原链表已经遍历完，此时prev正好指向反转后链表的头节点，所以返回prev。
+伪代码：
+prev = null
+curr = head
+while curr != null:
+    next = curr.next
+    curr.next = prev
+    prev = curr
+    curr = next
+return prev
+
 
 
 
