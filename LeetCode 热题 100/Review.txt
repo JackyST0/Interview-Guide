@@ -455,6 +455,27 @@ while curr != null:
     curr = next
 return prev
 
+3、回文链表
+采用数组辅助 + 双指针的思路来解决。链表本身不能像数组一样通过下标直接访问前后位置，所以先把链表中的所有节点值依次复制到数组vals中，然后在数组上判断是否回文。
+第一步遍历链表，用currentNode从head开始往后走，每访问一个节点，就把currentNode.val加入vals，然后currentNode = currentNode.next继续访问下一个节点。遍历结束后，vals中保存的就是链表从头到尾的所有值。
+第二步使用双指针判断回文。front指向数组开头，back指向数组末尾。每次比较vals[front]和vals[back]是否相等，如果不相等，说明链表不是回文，直接返回false；如果相等，就让front右移、back左移，继续比较下一组。
+当front >= back时，说明所有对称位置都比较完了，并且没有发现不同的值，所以返回true。
+伪代码：
+初始化数组vals
+currentNode = head
+while currentNode != null:
+    vals.add(currentNode.val)
+    currentNode = currentNode.next
+front = 0
+back = vals.size() - 1
+while front < back:
+    if vals[front] != vals[back]:
+        return false
+    front++
+    back--
+return true
+
+
 
 
 
