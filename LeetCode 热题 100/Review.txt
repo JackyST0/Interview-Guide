@@ -475,6 +475,20 @@ while front < back:
     back--
 return true
 
+4、环形链表
+采用哈希表的思路来解决，具体可以使用HashSet记录已经访问过的链表节点。链表如果没有环，那么从head一直沿着next往后走，最终一定会走到null；如果有环，就会在环中不断循环，并且再次遇到之前访问过的节点。
+初始化一个HashSet，命名为seen，用来保存已经经过的ListNode节点。注意这里存的是节点本身，不是节点的值，因为链表中可能有多个节点的val相同，不能只通过值判断是否重复。
+遍历链表时，每到一个节点head，就尝试把它加入seen。如果seen.add(head)返回true，说明这个节点之前没见过，可以继续往后走；如果返回false，说明这个节点已经出现过，链表存在环，直接返回true。
+如果遍历过程中head变成null，说明链表可以正常走到结尾，没有环，返回false。
+伪代码：
+初始化HashSet seen
+while head != null:
+    if seen中已经存在head:
+        return true
+    seen.add(head)
+    head = head.next
+return false
+
 
 
 
