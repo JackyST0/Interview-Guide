@@ -489,6 +489,25 @@ while head != null:
     head = head.next
 return false
 
+5、环形链表 II
+采用哈希表的思路来解决，具体使用HashSet记录已经访问过的链表节点。和“环形链表”只需要返回true或false不同，这题要求返回链表开始入环的第一个节点。
+定义指针pos从head开始遍历链表，同时定义visited集合保存已经访问过的节点。每次遍历到pos时，先判断visited中是否已经存在pos。
+如果visited中已经存在pos，说明这个节点之前访问过，现在又走回来了，因此它就是链表入环的第一个节点，直接返回pos。
+如果visited中不存在pos，就把pos加入visited，然后让pos = pos.next继续向后遍历。
+如果pos最终变成null，说明链表能正常走到结尾，不存在环，返回null。
+注意HashSet里存的是ListNode节点本身，而不是节点值。因为不同节点的val可能相同，但它们不是同一个节点，不能只用val判断是否重复。
+伪代码：
+pos = head
+初始化HashSet visited
+while pos != null:
+    if visited中已经存在pos:
+        return pos
+    else:
+        visited.add(pos)
+    pos = pos.next
+return null
+
+
 
 
 
