@@ -507,6 +507,24 @@ while pos != null:
     pos = pos.next
 return null
 
+6、合并两个有序链表
+采用递归的思路来解决。因为两个链表本身都是升序的，所以每次只需要比较两个链表当前头节点的值，把较小的那个节点放到合并后链表的前面，然后递归处理剩下的节点。
+递归终止条件是：如果l1为空，说明链表1已经用完，直接返回l2；如果l2为空，说明链表2已经用完，直接返回l1。因为剩下的链表本身已经是有序的，可以直接接到结果后面。
+如果l1.val < l2.val，说明l1当前节点更小，应该作为当前合并链表的头节点。接着让l1.next等于mergeTwoLists(l1.next, l2)，意思是把l1后面的部分和整个l2继续递归合并，最后返回l1。
+否则说明l2当前节点更小或相等，应该让l2作为当前头节点。接着让l2.next等于mergeTwoLists(l1, l2.next)，意思是把整个l1和l2后面的部分继续递归合并，最后返回l2。
+递归的本质就是每一层确定一个当前最小节点，然后把“剩余两个链表的合并结果”接到这个节点后面。
+伪代码：
+if l1 == null:
+    return l2
+if l2 == null:
+    return l1
+if l1.val < l2.val:
+    l1.next = mergeTwoLists(l1.next, l2)
+    return l1
+else:
+    l2.next = mergeTwoLists(l1, l2.next)
+    return l2
+
 
 
 
