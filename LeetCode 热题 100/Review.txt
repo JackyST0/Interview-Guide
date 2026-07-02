@@ -525,6 +525,36 @@ else:
     l2.next = mergeTwoLists(l1, l2.next)
     return l2
 
+7、合并两个有序链表
+采用模拟的思路来解决，本质上就是模拟小学竖式加法。两个链表中的数字是逆序存储的，所以链表头节点就是个位，后面的节点依次表示十位、百位等。这样从链表头开始遍历，正好可以从低位到高位逐位相加。
+定义head和tail用于构造答案链表。head表示结果链表的头节点，tail表示结果链表当前最后一个节点。刚开始结果链表为空，所以head和tail都为null。
+定义carry表示进位，初始为0。只要l1或l2还有节点，就继续循环。每轮取出当前位的两个数字：如果l1不为空，n1 = l1.val，否则n1 = 0；如果l2不为空，n2 = l2.val，否则n2 = 0。这样可以处理两个链表长度不同的情况。
+当前位的和是sum = n1 + n2 + carry。结果链表当前位应该保存sum % 10，也就是个位数字；新的进位是carry = sum / 10。如果结果链表还没有节点，就创建第一个节点，并让head和tail都指向它；否则就把新节点接到tail.next后面，再让tail后移。
+每轮处理完当前节点后，如果l1不为空就移动到l1.next，如果l2不为空就移动到l2.next。循环结束后，如果carry > 0，说明最高位还有进位，需要再追加一个值为carry的新节点。
+最后返回head，也就是结果链表的头节点。
+伪代码：
+head = null
+tail = null
+carry = 0
+while l1 != null 或者 l2 != null:
+    n1 = l1 != null ? l1.val : 0
+    n2 = l2 != null ? l2.val : 0
+    sum = n1 + n2 + carry
+    digit = sum % 10
+    if head == null:
+        head = new ListNode(digit)
+        tail = head
+    else:
+        tail.next = new ListNode(digit)
+        tail = tail.next
+    carry = sum / 10
+    if l1 != null:
+        l1 = l1.next
+    if l2 != null:
+        l2 = l2.next
+if carry > 0:
+    tail.next = new ListNode(carry)
+return head
 
 
 
